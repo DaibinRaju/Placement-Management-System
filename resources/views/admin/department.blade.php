@@ -41,12 +41,12 @@
 
                                 <div class="row form-group col-md-12 m-b-20">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter password" required>
+                                    <input type="password" name="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter password" required>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" onclick="loadDoc()" class="btn btn-rounded btn-success" data-dismiss="modal" aria-hidden="true">Save</button>
+                                <input type="submit" class="btn btn-rounded btn-success" value="Save">
                                 <button type="button" class="btn btn-rounded btn-secondary" data-dismiss="modal" aria-hidden="true">Cancel</button>
                             </div>
                         </form>
@@ -62,7 +62,7 @@
                         <div class="col-md-9 col-sm-9">
                             <div class="float-right d-xl-inline-block d-lg-inline-block">
 
-                                <a data-toggle="modal" href="#" data-target=".assign-members" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Task</a>
+                                <a data-toggle="modal" href="#" data-target=".assign-members" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Department</a>
                             </div>
                         </div>
                     </div>
@@ -85,10 +85,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 page-n">Show: <a href="#" class="active">10</a> <a href="#">20</a> <a href="#">50</a></div>
-                        <div class="col-md-6 text-right page-n">Prev <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> ... <a href="#">10</a> <a href="#">11</a> <a href="#">12</a> <a href="#">Next</a></div>
-                    </div>
+
                 </div>
             </div>
 
@@ -97,26 +94,30 @@
 </div>
 
 <script>
-    function loadDoc() {
+    /*function loadDoc() {
 
-            var x = document.getElementById("form");
-            var text = "";
-            var i;
-            for (i = 0; i < x.length; i++) {
-                text += x.elements[i].name + "=" + x.elements[i].value + "&";
-            }
-            document.getElementById("table_body").innerHTML = text;
-        
+        var x = document.getElementById("form");
+        var text = "";
+        var i;
+        for (i = 0; i < x.length; i++) {
+            text += x.elements[i].name + "=" + x.elements[i].value + "&";
+        }
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("table_body").innerHTML = this.responseText;
             }
+
+            if (this.readyState == 4 && this.status != 200) {
+                document.getElementById("table_body").innerHTML = "eoor";
+            }
+            
         };
         xhttp.open("POST", "/admin/department", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(text);
     }
+    */
 </script>
 @endsection

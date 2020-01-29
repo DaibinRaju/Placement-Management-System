@@ -65,6 +65,9 @@ Route::group(['prefix' => 'hod'], function () {
 
 Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () {
     Route::get("/", "ProfileController@showStudentProfile");
+    Route::get('/exam', function () {
+        return view('student.exam');
+    });
 });
 
 Route::group(['prefix' => 'tutor'], function () {

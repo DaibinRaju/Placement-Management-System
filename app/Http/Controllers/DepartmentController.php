@@ -19,6 +19,7 @@ class DepartmentController extends Controller
         $department= Department::all();
         
         return view('admin.department', compact('department'));
+        
     }
 
     /**
