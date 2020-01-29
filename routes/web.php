@@ -68,6 +68,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
     Route::get('/exam', function () {
         return view('student.exam');
     });
+
 });
 
 Route::group(['prefix' => 'tutor'], function () {
