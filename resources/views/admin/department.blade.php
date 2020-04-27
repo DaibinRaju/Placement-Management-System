@@ -73,15 +73,28 @@
                         <table class="table color-table primary-table">
                             <thead>
                                 <tr>
-                                    <th class="w-20"> </th>
+
+                                    <th>Department Id</th>
                                     <th>Department Name</th>
-                                    <th>Head of Department</th>
-                                    <th>Username</th>
+                                    <th>Created At</th>
                                     <th>Actions</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody id="table_body">
+                            <tbody>
+                                @foreach($department as $row)
+                                <tr>
+                                    <td>{{$row['id']}}</td>
+                                    <td>{{$row['department_name']}}</td>
+                                    <td>{{$row['created_at']}}</td>
+
+
+                                    <td><a href="/admin/department/{{$row['id']}}"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a>
+                                        <a id="delete" onclick="verify()" href="/admin/department/delete/{{$row['id']}}"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                                    </td>
+
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

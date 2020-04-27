@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class FormItems extends Model
 {
     protected $guarded=[];
 
-    public function user(){
-        
-    }
+    
 }

@@ -17,7 +17,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $department= Department::all();
-        
+        //dd($department);
         return view('admin.department', compact('department'));
         
     }
@@ -47,19 +47,21 @@ class DepartmentController extends Controller
             'password'=>'required',
         ]);
 
-        User::create([
+        $user=User::create([
             'name' =>$request->hod_name,
             'admission_number'=>$request->username,
             'password'=>Hash::make($request->password),
             'role' =>"hod",
         ]);
 
+        
+
         Department::create([
             'department_name'=>$request->department_name,
-            'hod_name' =>$request->hod_name,
+            'user_id' =>$user->id,
         ]);
-        //return redirect('/admin/department');
-        return("hello");
+        return redirect('/admin/department');
+        
     }
 
     /**
@@ -70,7 +72,10 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $department = Department::where('id', $id)->firstOrFail();
+        $hod=User::where('id',$department->user_id)->firstOrFail();
+        //dd($hod);
+        return view('admin.departmentshow', compact('department','hod'));
     }
 
     /**
@@ -104,6 +109,10 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department = Department::find($id);
+        if ($department) {
+            $department->delete();
+        }
+        return back();
     }
 }

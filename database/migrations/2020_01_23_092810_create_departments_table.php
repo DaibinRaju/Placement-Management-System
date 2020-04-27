@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateDepartmentsTable extends Migration
 {
@@ -15,8 +16,8 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('department_name');
-            $table->string('hod_name');
+            $table->unsignedBigInteger('user_id');
+            $table->string('department_name')->nullable();
             $table->timestamps();
         });
     }

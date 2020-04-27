@@ -18,7 +18,7 @@
 
     <link href="/assets/plugins/vendors/c3-master/c3.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style type="text/css">
         .apexcharts-canvas {
             position: relative;
@@ -726,7 +726,7 @@
                 <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
                 <a href="index.html" class="b-brand">
 
-                    <img src="assets/images/college-logo1.jpg" alt="" class="logo">
+                    <img src="/assets/images/college-logo1.jpg" alt="" class="logo">
                 </a>
                 <a href="#!" class="mob-toggler">
                     <i class="feather icon-more-vertical"></i>
@@ -781,7 +781,7 @@
                                     </li>
                                     <li class="notification">
                                         <div class="media">
-                                            <img class="img-radius" src="assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
+                                            <img class="img-radius" src="/assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <p><strong>John Doe</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>5 min</span></p>
                                                 <p>New ticket Added</p>
@@ -793,7 +793,7 @@
                                     </li>
                                     <li class="notification">
                                         <div class="media">
-                                            <img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
+                                            <img class="img-radius" src="/assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <p><strong>Joseph William</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>10 min</span></p>
                                                 <p>Prchace New Theme and make payment</p>
@@ -802,7 +802,7 @@
                                     </li>
                                     <li class="notification">
                                         <div class="media">
-                                            <img class="img-radius" src="assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
+                                            <img class="img-radius" src="/assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>12 min</span></p>
                                                 <p>currently login</p>
@@ -811,7 +811,7 @@
                                     </li>
                                     <li class="notification">
                                         <div class="media">
-                                            <img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
+                                            <img class="img-radius" src="/assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <p><strong>Joseph William</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>30 min</span></p>
                                                 <p>Prchace New Theme and make payment</p>
@@ -834,13 +834,13 @@
                     <li>
                         <div class="dropdown drp-user">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?=str_replace('/', '', $user->admission_number)?>.jpg" class="img-radius" alt="User-Profile-Image">
+                                <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?=str_replace('/', '', $user ?? ''->admission_number)?>.jpg" class="img-radius" alt="User-Profile-Image">
                                 <span class="badge badge-pill badge-success">2</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-notification">
                                 <div class="pro-head">
-                                    <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?=str_replace('/', '', $user->admission_number)?>.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span>{{$user->name}}</span>
+                                    <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?=str_replace('/', '', $user ?? ''->admission_number)?>.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <span>{{$user ?? ''->name}}</span>
                                     <a href="/logout" class="dud-logout" title="Logout">
                                         <i class="feather icon-log-out"></i>
                                     </a>
@@ -866,13 +866,8 @@
                         <li class="nav-item pcoded-menu-caption">
                             <label>Dashboard</label>
                         </li>
-                        <li class="nav-item active pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Placements</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="index-project-statistics.html">Active</a></li>
-                                <li><a href="index-project-details.html">Expired</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a href="/student/drive" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Drives</span></a></li>        
+                        
                         <li class="nav-item pcoded-hasmenu">
                             <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Student Details</span></a>
                             <ul class="pcoded-submenu">
@@ -881,7 +876,7 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full calendar</span></a></li>        
-                        <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Exams</span></a></li>        
+                        <li class="nav-item"><a href="/student/exam" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Exams</span></a></li>        
                         <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-activity"></i></span><span class="pcoded-mtext">Prediction Model</span></a></li>        
                         
                     </ul>

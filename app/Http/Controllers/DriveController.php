@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Drive;
+use App\FormItems;
 use Illuminate\Http\Request;
-
+use App\Form;
+use App\Registeration;
 class DriveController extends Controller
 {
     /**
@@ -13,48 +15,9 @@ class DriveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view("admin.home");
-        /*
-<!--
-@foreach($drive as $drive)
-<div class="row">
-	<div class="col-md-12">
+    {   $drives = Drive::all()->toArray();
+        return view('admin.drive', compact('drives'));
 
-		<div class="">
-			<div class="card widget-card-user">
-				<div class="card-body p-b-0">
-					<div class="card-user">
-						<span class="badge badge-success float-right">ACTIVE</span>
-						<img src="assets/images/my/tcs.png" alt="" class="img-radius wid-80">
-						<h4 class="p-t-10 p-b-10 m-t-0">{{$drive->company_name}}</h4>
-						<span class="text-c-green f-14">Mumbai India</span>
-						<p class="text-muted p-t-10 p-b-10 m-0">{{$drive->description}}</p>
-					</div>
-				</div>
-				<div class="card-footer border-top bg-light">
-					<div class="row">
-						<div class="col-sm-4 footer-menu text-center border-right">
-							<p class="text-muted f-w-400 m-0 f-16">Date</p>
-							<span class="f-14 f-w-400">{{$drive->date}}</span>
-						</div>
-						<div class="col-sm-4 footer-menu text-center border-right">
-							<p class="text-muted f-w-400 m-0 f-16">Time</p>
-							<span class="f-14 f-w-400">{{$drive->time}}</span>
-						</div>
-						<div class="col-sm-4 footer-menu text-center">
-							<p class="text-muted f-w-400 m-0 f-16">Venue</p>
-							<span class="f-14 f-w-400">{{$drive->venue}}</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</div>
-@endforeach
--->*/
     }
 
     /**
@@ -64,7 +27,8 @@ class DriveController extends Controller
      */
     public function create()
     {
-        return view("admin.createdrive");
+        $formItems=FormItems::all();
+        return view("admin.createdrive",compact('formItems'));
     }
 
     /**
@@ -75,7 +39,34 @@ class DriveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Request::validate($request);
+        //dd(serialize($request->items));
+        // $validated_data=request()->validate([
+        //     'company_name'=>'required',
+        //     'description'=>'required',
+        //     'date'=>'required',
+        //     'time'=>'required',
+        //     'venue'=>'required',
+        //     'last_date_to_register'=>'required'
+        // ]);
+        //dd($request);
+
+        $drive=Drive::create([
+            'company_name'=>$request->company_name,
+            'description'=>$request->description,
+            'date'=>$request->date,
+            'time'=>$request->time,
+            'venue'=>$request->venue,
+            'last_date_to_register'=>$request->last_date_to_register
+        ]);
+
+        foreach($request->items as $item){
+            Form::create([
+                'drive_id'=>$drive->id,
+                'form_item_id'=>$item
+            ]);
+        }
+        return redirect('/admin/drive');
     }
 
     /**
@@ -84,9 +75,10 @@ class DriveController extends Controller
      * @param  \App\Drive  $drive
      * @return \Illuminate\Http\Response
      */
-    public function show(Drive $drive)
+    public function show($id)
     {
-        //
+        $drive= Drive::findOrFail($id);
+        return view('admin.driveshow',compact('drive'));
     }
 
     /**
@@ -118,8 +110,12 @@ class DriveController extends Controller
      * @param  \App\Drive  $drive
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Drive $drive)
+    public function destroy($id)
     {
-        //
+        $drive = Drive::find($id);
+        if ($drive) {
+            $drive->delete();
+        }
+        return back();
     }
 }

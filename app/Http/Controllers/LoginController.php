@@ -14,32 +14,37 @@ class LoginController extends Controller
     }
 
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
-        $credentials=request()->validate([
-            'admission_number'=>'required',
-            'password'=>'required',
+        $credentials = request()->validate([
+            'admission_number' => 'required',
+            'password' => 'required',
         ]);
         //Drive::create($validated_data);
         //return redirect('/admin');
 
         //$credentials = $request->only('email', 'password');
-            //dd($credentials);
-           // dd(Hash::make($credentials['password']).$credentials['password']);
-            //dd(
+        //dd($credentials);
+        // dd(Hash::make($credentials['password']).$credentials['password']);
+        //dd(
         if (Auth::attempt(['admission_number' => $credentials['admission_number'], 'password' => $credentials['password']])) {
             // Authentication passed...
             //dd(=="student");
-            switch(Auth::user()->role){
-                case "admin":   return redirect('/admin/drive');
-                                break;
-                case "student": return redirect('/student');
-                                break;
+            switch (Auth::user()->role) {
+                case "admin":
+                    return redirect('/admin/drive');
+                    break;
 
+                case "student":
+                    return redirect('/student');
+                    break;
+
+                case "hod":
+                    return redirect('/hod');
+                    break;
             }
-            
-        }
-        else{
+        } else {
             return redirect('/');
         }
     }
