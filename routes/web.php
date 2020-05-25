@@ -73,20 +73,16 @@ Route::group(['prefix' => 'hod', 'middleware' => 'is_hod'], function () {
     Route::get('/', function () {
         return view('hod.home');
     });
-
     Route::get('/file-upload', function () {
         return view('hod.fileupload');
     });
-
-
     Route::post("/file-upload", "FileUploadController@import");
-
-
     Route::get('/create-drive', function () {
         return view('admin.createdrive');
     });
-
     Route::post('/create-drive', 'DriveController@create');
+    Route::get("/faculty", "FacultyController@index");
+    Route::post("/faculty", "FacultyController@store");
 });
 
 
@@ -123,10 +119,18 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
     });
 });
 
-Route::group(['prefix' => 'tutor'], function () {
+Route::group(['prefix' => 'faculty'], function () {
     Route::get('/', function () {
-        return view('tutor.home');
+        return view('faculty.home');
     });
+    Route::get('/subjects','SubjectController@index');
+    Route::post('/subjects','SubjectController@store');
+    Route::get('/subjects/{id}','SubjectController@show')->name('subject.show');
+    Route::get('/subjects/{id}/questions/create','QuestionController@create')->name('question.create');
+    Route::post('/subjects/{id}/questions/create','QuestionController@store')->name('question.store');
+    Route::get('/subjects/delete/{id}','SubjectController@delete')->name('subject.delete');
+    Route::post('image/upload','QuestionController@imageHandler')->name('faculty.image.upload');
+
 });
 
 Route::group(['prefix' => 'classrep'], function () {

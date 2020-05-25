@@ -43,9 +43,13 @@ class LoginController extends Controller
                 case "hod":
                     return redirect('/hod');
                     break;
+
+                case "faculty":
+                    return redirect('/faculty');
+                    break;
             }
         } else {
-            return redirect('/');
+            return redirect('/')->with("error", "Incorrect credentials");
         }
     }
 

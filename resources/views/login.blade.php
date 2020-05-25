@@ -27,10 +27,16 @@
 							<form name="login_info" method="post">
 								@csrf
 								<div class="input-group mb-3">
-									<input type="text" name="admission_number" class="form-control" placeholder="Admission number" value="{{old('username')}}">
+									<input type="text" id="admission_number" name="admission_number" class="form-control @error('admission_number') is-invalid @enderror" placeholder="Admission number" value="{{old('admission_number')}}" required>
+									@error('admission_number')
+									<label class="error jquery-validation-error small form-text invalid-feedback" for="admission_number">{{$errors->first('admission_number')}}</label>
+									@enderror
 								</div>
 								<div class="input-group mb-4">
-									<input type="password" name="password" class="form-control" placeholder="Password">
+									<input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
+									@error('password')
+									<label class="error jquery-validation-error small form-text invalid-feedback" for="password">{{$errors->first('password')}}</label>
+									@enderror
 								</div>
 								<div class="form-group text-left mt-2">
 									<div class="checkbox checkbox-primary d-inline">
@@ -95,5 +101,11 @@
 	</script>
 
 </body>
+@if(session()->has('error'))
+<script src="/assets/js/plugins/sweetalert.min.js"></script>
+<script>
+	swal("Error", "{{ session()->get('error') }}", "error");
+</script>
+@endif
 
 </html>

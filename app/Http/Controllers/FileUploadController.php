@@ -25,6 +25,6 @@ class FileUploadController extends Controller
         
         Excel::import(new StudentDetailImport,request()->file('file'));
            
-        return back();
+        return back()->with("success","Student users created");
     }
 }

@@ -827,7 +827,7 @@
                     <ul class="nav pcoded-inner-navbar ">
                         <li class="nav-item pcoded-menu-caption">
                             <label>Dashboard</label>
-                        </li> 
+                        </li>
                         <li class="nav-item"><a href="/admin/drive" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Manage Drives</span></a></li>
                         <li class="nav-item"><a href="/admin/search" class="nav-link "><span class="pcoded-micon"><i class="feather icon-sliders"></i></span><span class="pcoded-mtext">Search Students</span></a></li>
                         <li class="nav-item"><a href="/admin/department" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Departments</span></a></li>
@@ -836,7 +836,7 @@
                         <li class="nav-item"><a href="/admin/training" class="nav-link "><span class="pcoded-micon"><i class="feather icon-award"></i></span><span class="pcoded-mtext">Manage Trainings</span></a></li>
                         <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full calendar</span></a></li>
                         <li class="nav-item"><a href="file-upload.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-settings"></i></span><span class="pcoded-mtext">Settings</span></a></li>
-                         </ul>
+                    </ul>
                     <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
                         <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                     </div>
@@ -849,7 +849,7 @@
         <div class="pcoded-main-container">
             <div class="pcoded-content">
 
-            @yield('body')
+                @yield('body')
 
             </div>
         </div>
@@ -871,5 +871,20 @@
 
     @yield('extrajs')
 
+    @if(session()->has('error'))
+    <script src="/assets/js/plugins/sweetalert.min.js"></script>
+    <script>
+        swal("Error", "{{ session()->get('error') }}", "error");
+    </script>
+    @endif
+
+    @if(session()->has('success'))
+    <script src="/assets/js/plugins/sweetalert.min.js"></script>
+    <script>
+        swal("Success", "{{ session()->get('success') }}", "success");
+    </script>
+    @endif
+
 </body>
+
 </html>

@@ -717,51 +717,18 @@
 </head>
 
 <body>
-
-
-
-
-
     <header class="navbar pcoded-header navbar-expand-lg navbar-light headerpos-fixed">
         <div class="content-main  container">
             <div class="m-header">
                 <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
                 <a href="index.html" class="b-brand">
-
-                    <img src="/assets/images/college-logo1.jpg" alt="" class="logo">
+                    <img style="height: 100%;max-width: 100%;display: block;margin: auto;" src="/assets/images/logo-dark.png" alt="" class="logo">
                 </a>
                 <a href="#!" class="mob-toggler">
-                    <i class="feather icon-more-vertical"></i>
+                    <i style="color:#4886FF;" class="feather icon-more-vertical"></i>
                 </a>
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
-                        <div class="search-bar">
-                            <div class="container position-relative">
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search here">
-                                <button type="button" class="close" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu profile-notification ">
-                                <ul class="pro-body">
-                                    <li><a href="user-profile.html" class="dropdown-item"><i class="fas fa-circle"></i> Profile</a></li>
-                                    <li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i> My Messages</a></li>
-                                    <li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i> Lock Screen</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
                 <ul class="navbar-nav ml-auto">
                     <li>
                         <div class="dropdown">
@@ -836,21 +803,20 @@
                     <li>
                         <div class="dropdown drp-user">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/assets/images/my/16CS093.jpg" class="img-radius" alt="User-Profile-Image">
+                                <img src="/assets/admin.jpg" class="img-radius" alt="User-Profile-Image">
                                 <span class="badge badge-pill badge-success">2</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-notification">
                                 <div class="pro-head">
-                                    <img src="/assets/images/my/16CS093.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span>Daibin Raju</span>
-                                    <a href="auth-signin.html" class="dud-logout" title="Logout">
+                                    <img src="/assets/admin.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <span>Admin</span>
+                                    <a href="/logout" class="dud-logout" title="Logout">
                                         <i class="feather icon-log-out"></i>
                                     </a>
                                 </div>
                                 <ul class="pro-body">
                                     <li><a href="user-profile.html" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
-                                    <li><a href="email_inbox.html" class="dropdown-item"><i class="feather icon-log-out"></i> Logout</a></li>
-
+                                    <li><a href="/logout" class="dropdown-item"><i class="feather icon-log-out"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -860,75 +826,44 @@
         </div>
     </header>
     <div class="content-main  container">
-
-<nav class="pcoded-navbar menupos-fixed menu-light">
-    <div class="navbar-wrapper content-main  container">
-        <div class="navbar-content scroll-div ps ps--active-y">
-            <ul class="nav pcoded-inner-navbar ">
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Dashboard</label>
-                </li>
-                <li class="nav-item active pcoded-hasmenu">
-                    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Placements</span></a>
-                    <ul class="pcoded-submenu">
-                        <li><a href="index-project-statistics.html">Active</a></li>
-                        <li><a href="index-project-details.html">Expired</a></li>
+        <nav class="pcoded-navbar menupos-fixed menu-light">
+            <div class="navbar-wrapper content-main  container">
+                <div class="navbar-content scroll-div ps ps--active-y">
+                    <ul class="nav pcoded-inner-navbar ">
+                        <li class="nav-item pcoded-menu-caption">
+                            <label>Dashboard</label>
+                        </li>
+                        <li class="nav-item active pcoded-hasmenu">
+                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Placements</span></a>
+                            <ul class="pcoded-submenu">
+                                <li><a href="index-project-statistics.html">Active</a></li>
+                                <li><a href="index-project-details.html">Expired</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="/hod/faculty" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Faculties</span></a></li>
+                        <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
+                        <li class="nav-item"><a href="image_crop.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-scissors"></i></span><span class="pcoded-mtext">Image cropper</span></a></li>
+                        <li class="nav-item pcoded-menu-caption">
+                            <label>Other</label>
+                        </li>
                     </ul>
-                </li>
-                <li class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Student Details</span></a>
-                    <ul class="pcoded-submenu">
-                        <li><a href="index-project-statistics.html">Student Report</a></li>
-                        <li><a href="index-project-details.html">Placement Report</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Department</span></a>
-                    <ul class="pcoded-submenu">
-                        <li><a href="index-project-statistics.html">Department Details</a></li>
-                        <li><a href="index-project-details.html">Faculty Details</a></li>
-                        <li><a href="index-project-details.html">Course Details</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-minus"></i></span><span class="pcoded-mtext">Invoice</span></a>
-                    <ul class="pcoded-submenu">
-                        <li><a href="invoice.html">Invoice</a></li>
-                        <li><a href="invoice-summary.html">Invoice summary</a></li>
-                        <li><a href="invoice-list.html">Invoice list</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full calendar</span></a></li>
-                <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
-                <li class="nav-item"><a href="image_crop.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-scissors"></i></span><span class="pcoded-mtext">Image cropper</span></a></li>
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Other</label>
-                </li>
-                </ul>
-            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    </div>
+                    <div class="ps__rail-y" style="top: 0px; height: 665px; right: 0px;">
+                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 217px;"></div>
+                    </div>
+                </div>
             </div>
-            <div class="ps__rail-y" style="top: 0px; height: 665px; right: 0px;">
-                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 217px;"></div>
-            </div>
-        </div>
-    </div>
-</nav>
-
-
+        </nav>
         <div class="pcoded-main-container">
             <div class="pcoded-content">
 
-            @yield('body')
-
+                @yield('body')
 
             </div>
         </div>
-
     </div>
-
-
     <script src="/assets/js/vendor-all.min.js"></script>
     <script src="/assets/js/plugins/bootstrap.min.js"></script>
     <script src="/assets/js/pcoded.min.js"></script>
@@ -944,6 +879,19 @@
     <script src="/assets/js/pages/dashboard-server.js"></script>
     <script src="/assets/js/plugins/dropzone-amd-module.min.js"></script>
 
+    @if(session()->has('error'))
+    <script src="/assets/js/plugins/sweetalert.min.js"></script>
+    <script>
+        swal("Error", "{{ session()->get('error') }}", "error");
+    </script>
+    @endif
+
+    @if(session()->has('success'))
+    <script src="/assets/js/plugins/sweetalert.min.js"></script>
+    <script>
+        swal("Success", "{{ session()->get('success') }}", "success");
+    </script>
+    @endif
 </body>
 
 </html>

@@ -9,7 +9,6 @@
             </div>
         </div>
         <div class="tab-content">
-
             <div class="modal fade assign-members" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel2" aria-hidden="true">
                 <div class="modal-dialog modle-510">
                     <div class="modal-content">
@@ -61,7 +60,6 @@
                         </div>
                         <div class="col-md-9 col-sm-9">
                             <div class="float-right d-xl-inline-block d-lg-inline-block">
-
                                 <a data-toggle="modal" href="#" data-target=".assign-members" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Department</a>
                             </div>
                         </div>
@@ -106,31 +104,4 @@
     </div>
 </div>
 
-<script>
-    /*function loadDoc() {
-
-        var x = document.getElementById("form");
-        var text = "";
-        var i;
-        for (i = 0; i < x.length; i++) {
-            text += x.elements[i].name + "=" + x.elements[i].value + "&";
-        }
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("table_body").innerHTML = this.responseText;
-            }
-
-            if (this.readyState == 4 && this.status != 200) {
-                document.getElementById("table_body").innerHTML = "eoor";
-            }
-            
-        };
-        xhttp.open("POST", "/admin/department", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send(text);
-    }
-    */
-</script>
 @endsection

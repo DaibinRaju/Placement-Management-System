@@ -15,9 +15,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'department_id','name', 'admission_number', 'password', 'role',
-    ];
+    // protected $fillable = [
+    //     'department_id','name', 'admission_number', 'password', 'role',
+    // ];
+
+    protected $guarded =[];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -39,5 +41,9 @@ class User extends Authenticatable
 
     public function department(){
         
+    }
+
+    public function subject(){
+        return $this->hasMany(Subject::class);
     }
 }

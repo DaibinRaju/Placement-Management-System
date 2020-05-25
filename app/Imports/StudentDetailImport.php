@@ -4,9 +4,10 @@ namespace App\Imports;
 
 use App\StudentDetail;
 use App\User;
+use App\Department;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
-
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class StudentDetailImport implements ToModel, WithHeadingRow
@@ -18,15 +19,19 @@ class StudentDetailImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        $department=Department::where("user_id",Auth::user()->id)->first()->department_name;
+        
+
         User::create([
             'name' =>$row['student_name'],
+            'department_id'=>Auth::user()->department_id,
             'admission_number'=>$row['admission_number'],
             'password'=>Hash::make($row['admission_number']),
             'role' =>"student",
         ]);
         //dd(array_keys($row));
         return new StudentDetail([
-            'branch'     => $row['branch'],
+            'branch'     => $department,
             'division'     => $row['division'],
             'enrollment_number'     => $row['enrollment_number'],
             'student_name'     => $row['student_name'],

@@ -77,7 +77,7 @@ class ExamController extends Controller
         // if($request->has('file2')){
         //    Excel::import(new QuestionsImport, request()->file('file2'));
         // }
-        return redirect('/admin/exam');
+        return redirect('/admin/exam')->with("success","Exam created");
     }
 
     /**
@@ -129,7 +129,7 @@ class ExamController extends Controller
             $exam->delete();
         }
 
-        return back();
+        return back()->with("success","Exam deleted");
     }
 
     public function index_student()

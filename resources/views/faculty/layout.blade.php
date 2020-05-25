@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from html.phoenixcoded.net/mintone/bootstrap/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Nov 2019 16:19:09 GMT -->
 
 <head>
-    <title>Mintone - Bootstrap 4 Admin Dashboard Template</title>
+    <title>SJCET PMS</title>
 
 
-    <!--[if lt IE 11]>
-    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    	<![endif]-->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -18,13 +13,14 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
 
-    <link href="assets/plugins/vendors/morrisjs/morris.css" rel="stylesheet">
+    <link href="/assets/plugins/vendors/morrisjs/morris.css" rel="stylesheet">
 
-    <link href="assets/plugins/vendors/c3-master/c3.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="/assets/plugins/vendors/c3-master/c3.min.css" rel="stylesheet">
+    @yield('css')
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/plugins/dropzone.min.css">
     <style type="text/css">
         .apexcharts-canvas {
             position: relative;
@@ -721,51 +717,18 @@
 </head>
 
 <body>
-
-
-
-
-
     <header class="navbar pcoded-header navbar-expand-lg navbar-light headerpos-fixed">
         <div class="content-main  container">
             <div class="m-header">
                 <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
                 <a href="index.html" class="b-brand">
-
-                    <img src="assets/images/college-logo1.jpg" alt="" class="logo">
+                    <img style="height: 100%;max-width: 100%;display: block;margin: auto;" src="/assets/images/logo-dark.png" alt="" class="logo">
                 </a>
                 <a href="#!" class="mob-toggler">
-                    <i class="feather icon-more-vertical"></i>
+                    <i style="color:#4886FF;" class="feather icon-more-vertical"></i>
                 </a>
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
-                        <div class="search-bar">
-                            <div class="container position-relative">
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search here">
-                                <button type="button" class="close" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu profile-notification ">
-                                <ul class="pro-body">
-                                    <li><a href="user-profile.html" class="dropdown-item"><i class="fas fa-circle"></i> Profile</a></li>
-                                    <li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i> My Messages</a></li>
-                                    <li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i> Lock Screen</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
                 <ul class="navbar-nav ml-auto">
                     <li>
                         <div class="dropdown">
@@ -787,7 +750,7 @@
                                     </li>
                                     <li class="notification">
                                         <div class="media">
-                                            <img class="img-radius" src="assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
+                                            <img class="img-radius" src="/assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <p><strong>John Doe</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>5 min</span></p>
                                                 <p>New ticket Added</p>
@@ -799,7 +762,7 @@
                                     </li>
                                     <li class="notification">
                                         <div class="media">
-                                            <img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
+                                            <img class="img-radius" src="/assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <p><strong>Joseph William</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>10 min</span></p>
                                                 <p>Prchace New Theme and make payment</p>
@@ -808,7 +771,7 @@
                                     </li>
                                     <li class="notification">
                                         <div class="media">
-                                            <img class="img-radius" src="assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
+                                            <img class="img-radius" src="/assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>12 min</span></p>
                                                 <p>currently login</p>
@@ -840,21 +803,20 @@
                     <li>
                         <div class="dropdown drp-user">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="assets/images/my/16CS093.jpg" class="img-radius" alt="User-Profile-Image">
+                                <img src="/assets/admin.jpg" class="img-radius" alt="User-Profile-Image">
                                 <span class="badge badge-pill badge-success">2</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-notification">
                                 <div class="pro-head">
-                                    <img src="assets/images/my/16CS093.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span>Daibin Raju</span>
-                                    <a href="auth-signin.html" class="dud-logout" title="Logout">
+                                    <img src="/assets/admin.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <span>Admin</span>
+                                    <a href="/logout" class="dud-logout" title="Logout">
                                         <i class="feather icon-log-out"></i>
                                     </a>
                                 </div>
                                 <ul class="pro-body">
                                     <li><a href="user-profile.html" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
-                                    <li><a href="email_inbox.html" class="dropdown-item"><i class="feather icon-log-out"></i> Logout</a></li>
-
+                                    <li><a href="/logout" class="dropdown-item"><i class="feather icon-log-out"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -864,7 +826,6 @@
         </div>
     </header>
     <div class="content-main  container">
-
         <nav class="pcoded-navbar menupos-fixed menu-light">
             <div class="navbar-wrapper content-main  container">
                 <div class="navbar-content scroll-div ps ps--active-y">
@@ -879,51 +840,12 @@
                                 <li><a href="index-project-details.html">Expired</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Student Details</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="index-project-statistics.html">Student Report</a></li>
-                                <li><a href="index-project-details.html">Placement Report</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Department</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="index-project-statistics.html">Department Details</a></li>
-                                <li><a href="index-project-details.html">Faculty Details</a></li>
-                                <li><a href="index-project-details.html">Course Details</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-minus"></i></span><span class="pcoded-mtext">Invoice</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="invoice.html">Invoice</a></li>
-                                <li><a href="invoice-summary.html">Invoice summary</a></li>
-                                <li><a href="invoice-list.html">Invoice list</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full calendar</span></a></li>
-                        <li class="nav-item"><a href="file-upload.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
+                        <li class="nav-item"><a href="/faculty/subjects" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Subjects</span></a></li>
+                        <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
                         <li class="nav-item"><a href="image_crop.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-scissors"></i></span><span class="pcoded-mtext">Image cropper</span></a></li>
                         <li class="nav-item pcoded-menu-caption">
                             <label>Other</label>
                         </li>
-                        <li class="nav-item pcoded-hasmenu">
-                            <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-menu"></i></span><span class="pcoded-mtext">Menu levels</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="#">Menu Level 2.1</a></li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="#">Menu level 2.2</a>
-                                    <ul class="pcoded-submenu">
-                                        <li><a href="#">Menu level 3.1</a></li>
-                                        <li><a href="#">Menu level 3.2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item disabled"><a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Disabled menu</span></a></li>
-                        <li class="nav-item"><a href="sample-page.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Sample page</span></a></li>
                     </ul>
                     <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
                         <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
@@ -934,34 +856,43 @@
                 </div>
             </div>
         </nav>
-
-
         <div class="pcoded-main-container">
             <div class="pcoded-content">
 
-            @yield('body')
-
+                @yield('body')
 
             </div>
         </div>
-
     </div>
+    @yield('js')
+    <script src="/assets/js/vendor-all.min.js"></script>
+    <script src="/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="/assets/js/pcoded.min.js"></script>
+    <script src="/assets/js/plugins/apexcharts.min.js"></script>
+    <script src="/assets/js/plugins/jquery.peity.min.js"></script>
+    <script src="/assets/js/plugins/jquery.knob.min.js"></script>
+    <script src="/assets/js/pages/jquery.knob-custom.min.js"></script>
+    <script src="/assets/plugins/vendors/d3/d3.min.js"></script>
+    <script src="/assets/plugins/vendors/c3-master/c3.min.js"></script>
+    <script src="/assets/plugins/vendors/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/plugins/vendors/raphael/raphael-min.js"></script>
+    <script src="/assets/plugins/vendors/morrisjs/morris.js"></script>
+    <script src="/assets/js/pages/dashboard-server.js"></script>
+    <script src="/assets/js/plugins/dropzone-amd-module.min.js"></script>
 
+    @if(session()->has('error'))
+    <script src="/assets/js/plugins/sweetalert.min.js"></script>
+    <script>
+        swal("Error", "{{ session()->get('error') }}", "error");
+    </script>
+    @endif
 
-    <script src="assets/js/vendor-all.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-    <script src="assets/js/pcoded.min.js"></script>
-    <script src="assets/js/plugins/apexcharts.min.js"></script>
-    <script src="assets/js/plugins/jquery.peity.min.js"></script>
-    <script src="assets/js/plugins/jquery.knob.min.js"></script>
-    <script src="assets/js/pages/jquery.knob-custom.min.js"></script>
-    <script src="assets/plugins/vendors/d3/d3.min.js"></script>
-    <script src="assets/plugins/vendors/c3-master/c3.min.js"></script>
-    <script src="assets/plugins/vendors/sparkline/jquery.sparkline.min.js"></script>
-    <script src="assets/plugins/vendors/raphael/raphael-min.js"></script>
-    <script src="assets/plugins/vendors/morrisjs/morris.js"></script>
-    <script src="assets/js/pages/dashboard-server.js"></script>
-
+    @if(session()->has('success'))
+    <script src="/assets/js/plugins/sweetalert.min.js"></script>
+    <script>
+        swal("Success", "{{ session()->get('success') }}", "success");
+    </script>
+    @endif
 </body>
 
 </html>
