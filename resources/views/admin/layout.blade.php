@@ -834,6 +834,7 @@
                         <li class="nav-item"><a href="/admin/batches" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Batches</span></a></li>
                         <li class="nav-item"><a href="/admin/exam" class="nav-link "><span class="pcoded-micon"><i class="feather icon-award"></i></span><span class="pcoded-mtext">Manage Exams</span></a></li>
                         <li class="nav-item"><a href="/admin/training" class="nav-link "><span class="pcoded-micon"><i class="feather icon-award"></i></span><span class="pcoded-mtext">Manage Trainings</span></a></li>
+                        <li class="nav-item"><a href="/admin/files" class="nav-link "><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">File Manager</span></a></li>
                         <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full calendar</span></a></li>
                         <li class="nav-item"><a href="file-upload.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-settings"></i></span><span class="pcoded-mtext">Settings</span></a></li>
                     </ul>

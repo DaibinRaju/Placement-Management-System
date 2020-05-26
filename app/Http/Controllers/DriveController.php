@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Drive;
+use App\DriveFile;
 use App\FormItems;
 use Illuminate\Http\Request;
 use App\Form;
 use App\Registeration;
+use Illuminate\Support\Facades\Storage;
+
 class DriveController extends Controller
 {
     /**
@@ -78,7 +81,8 @@ class DriveController extends Controller
     public function show($id)
     {
         $drive= Drive::findOrFail($id);
-        return view('admin.driveshow',compact('drive'));
+        $files=DriveFile::where('drive_id',$id)->get();
+        return view('admin.driveshow',compact('drive','files'));
     }
 
     /**
@@ -114,6 +118,7 @@ class DriveController extends Controller
     {
         $drive = Drive::find($id);
         if ($drive) {
+            Storage::deleteDirectory($drive->company_name);
             $drive->delete();
         }
         return back();

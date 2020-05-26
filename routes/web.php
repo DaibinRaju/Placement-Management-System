@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get("/drive/create", "DriveController@create");
     Route::post("/drive/create", "DriveController@store");
     Route::get("/drive/{id}", "DriveController@show");
+    Route::post("/drive/{id}/file", "FileUploadController@store")->name('admin.drive.fileupload');
     Route::get("/drive/delete/{id}", "DriveController@destroy");
     //todo>>>>
     Route::get("/drive/{id}/edit", "DriveController@edit");
@@ -65,6 +66,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     ////////////////////////////////////////////////
     Route::get("/search", "SearchController@search");
     Route::post("/search", "SearchController@result");
+
+    //////////////////////////////////////////////////
+    Route::get("/files", "FileUploadController@index")->name('admin.file');
+    Route::get("/files/create", "FileUploadController@create")->name('admin.file.create');
+    Route::post("/files/create", "FileUploadController@store")->name('admin.file.store');
+    Route::post("/fileaction","FileUploadController@file_action")->name('file_action');
 
 
 });

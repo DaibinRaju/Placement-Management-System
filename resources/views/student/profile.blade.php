@@ -11,7 +11,10 @@
                     <div class="col-lg-9 col-md-9 f-18 font-weight-bold text-uppercase">Profile</div>
                     <a href="#" data-toggle="modal" data-target=".add-task" class="col-lg-3 col-md-3 btn btn-rounded btn-primary waves-effect waves-light btn-block">Edit
                         Profile</a>
+                        <div class="col-md-6 text-right">
+
                 </div>
+                
             </div>
             <div class="card-body">
                 <div class="row">
