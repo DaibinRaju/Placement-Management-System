@@ -44,14 +44,14 @@ class DriveController extends Controller
     {
         //Request::validate($request);
         //dd(serialize($request->items));
-        // $validated_data=request()->validate([
-        //     'company_name'=>'required',
-        //     'description'=>'required',
-        //     'date'=>'required',
-        //     'time'=>'required',
-        //     'venue'=>'required',
-        //     'last_date_to_register'=>'required'
-        // ]);
+        $validated_data=request()->validate([
+            'company_name'=>'required',
+            'description'=>'required',
+            'date'=>'required',
+            'time'=>'required',
+            'venue'=>'required',
+            'last_date_to_register'=>'required'
+        ]);
         //dd($request);
 
         $drive=Drive::create([

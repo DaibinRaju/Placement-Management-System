@@ -19,7 +19,7 @@ class LoginController extends Controller
 
         $credentials = request()->validate([
             'admission_number' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:4',
         ]);
         //Drive::create($validated_data);
         //return redirect('/admin');

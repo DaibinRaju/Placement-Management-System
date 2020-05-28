@@ -32,7 +32,7 @@
 									<label class="error jquery-validation-error small form-text invalid-feedback" for="admission_number">{{$errors->first('admission_number')}}</label>
 									@enderror
 								</div>
-								<div class="input-group mb-4">
+								<div class="input-group mb-3">
 									<input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
 									@error('password')
 									<label class="error jquery-validation-error small form-text invalid-feedback" for="password">{{$errors->first('password')}}</label>

@@ -18,16 +18,24 @@
                     <h5>Basic Details</h5>
                     <hr>
                     <div class="row">
+                        
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-label">Company Name</label>
-                                <input type="text" class="form-control" name="company_name" placeholder="Company Name" required>
+                                <input type="text" id="company_name" class="form-control @error('company_name') is-invalid @enderror" name="company_name" placeholder="Company Name" required>
+                                @error('company_name')
+                                <label class="error jquery-validation-error small form-text invalid-feedback" for="company_name">{{$errors->first('company_name')}}</label>
+                                @enderror
+
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-label">Description</label>
-                                <textarea class="form-control" name="description" placeholder="Drive Description" required></textarea>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Drive Description" required></textarea>
+                                @error('description')
+                                <label class="error jquery-validation-error small form-text invalid-feedback" for="">{{$errors->first('description')}}</label>
+                                @enderror
                             </div>
                         </div>
                         <div class="row col-md-12">

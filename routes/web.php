@@ -73,6 +73,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::post("/files/create", "FileUploadController@store")->name('admin.file.store');
     Route::post("/fileaction","FileUploadController@file_action")->name('file_action');
 
+    /////////////////////////////////////////////////////
+    Route::get('/calendar',function(){
+        return view('admin.calendar');
+    })->name('calendar');
+
 
 });
 
