@@ -23,7 +23,6 @@
 						<img src="assets/images/college-logo.jpg" alt="SJCET" class="img-fluid" align="center">
 						<div class="card-body">
 							<h4 class="mb-3 f-w-400">Placement Management System</h4>
-							<h4 class="mb-3 f-w-400">Signin</h4>
 							<form name="login_info" method="post">
 								@csrf
 								<div class="input-group mb-3">

@@ -176,7 +176,7 @@
             padding: 4px 8px;
         }
 
-        .apexcharts-tooltip-candlestick>div {
+        .apexcharts-tooltip-candlestick > div {
             margin: 4px 0;
         }
 
@@ -690,7 +690,7 @@
         }
 
         .resize-triggers,
-        .resize-triggers>div,
+        .resize-triggers > div,
         .contract-trigger:before {
             content: " ";
             display: block;
@@ -702,7 +702,7 @@
             overflow: hidden;
         }
 
-        .resize-triggers>div {
+        .resize-triggers > div {
             background: #eee;
             overflow: auto;
         }
@@ -717,205 +717,243 @@
 <body>
 
 
-
-
-
-    <header class="navbar pcoded-header navbar-expand-lg navbar-light headerpos-fixed">
-        <div class="content-main  container">
-            <div class="m-header">
-                <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-                <a href="index.html" class="b-brand">
-
-                    <img src="/assets/images/college-logo1.jpg" alt="" class="logo">
-                </a>
-                <a href="#!" class="mob-toggler">
-                    <i class="feather icon-more-vertical"></i>
-                </a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
-                        <div class="search-bar">
-                            <div class="container position-relative">
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search here">
-                                <button type="button" class="close" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu profile-notification ">
-                                <ul class="pro-body">
-                                    <li><a href="user-profile.html" class="dropdown-item"><i class="fas fa-circle"></i> Profile</a></li>
-                                    <li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i> My Messages</a></li>
-                                    <li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i> Lock Screen</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li>
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                                <i class="icon feather icon-bell"></i>
-                                <span class="badge badge-pill badge-danger">5</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right notification">
-                                <div class="noti-head">
-                                    <h6 class="d-inline-block m-b-0">Notifications</h6>
-                                    <div class="float-right">
-                                        <a href="#!" class="m-r-10">mark as read</a>
-                                        <a href="#!">clear all</a>
-                                    </div>
-                                </div>
-                                <ul class="noti-body ps">
-                                    <li class="n-title">
-                                        <p class="m-b-0">NEW</p>
-                                    </li>
-                                    <li class="notification">
-                                        <div class="media">
-                                            <img class="img-radius" src="/assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <p><strong>John Doe</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>5 min</span></p>
-                                                <p>New ticket Added</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="n-title">
-                                        <p class="m-b-0">EARLIER</p>
-                                    </li>
-                                    <li class="notification">
-                                        <div class="media">
-                                            <img class="img-radius" src="/assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <p><strong>Joseph William</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>10 min</span></p>
-                                                <p>Prchace New Theme and make payment</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="notification">
-                                        <div class="media">
-                                            <img class="img-radius" src="/assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>12 min</span></p>
-                                                <p>currently login</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="notification">
-                                        <div class="media">
-                                            <img class="img-radius" src="/assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <p><strong>Joseph William</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>30 min</span></p>
-                                                <p>Prchace New Theme and make payment</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                                    </div>
-                                    <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-                                    </div>
-                                </ul>
-                                <div class="noti-footer">
-                                    <a href="#!">show all</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown drp-user">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?=str_replace('/', '', $user ?? ''->admission_number)?>.jpg" class="img-radius" alt="User-Profile-Image">
-                                <span class="badge badge-pill badge-success">2</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-notification">
-                                <div class="pro-head">
-                                    <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?=str_replace('/', '', $user ?? ''->admission_number)?>.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span>{{$user ?? ''->name}}</span>
-                                    <a href="/logout" class="dud-logout" title="Logout">
-                                        <i class="feather icon-log-out"></i>
-                                    </a>
-                                </div>
-                                <ul class="pro-body">
-                                    <li><a href="user-profile.html" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
-                                    <li><a href="/logout" class="dropdown-item"><i class="feather icon-log-out"></i> Logout</a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+<header class="navbar pcoded-header navbar-expand-lg navbar-light headerpos-fixed">
     <div class="content-main  container">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="index.html" class="b-brand">
 
-        <nav class="pcoded-navbar menupos-fixed menu-light">
-            <div class="navbar-wrapper content-main  container">
-                <div class="navbar-content scroll-div ps ps--active-y">
-                    <ul class="nav pcoded-inner-navbar ">
-                        <li class="nav-item pcoded-menu-caption">
-                            <label>Dashboard</label>
-                        </li>
-                        <li class="nav-item"><a href="/student/drive" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Drives</span></a></li>        
-                        
-                        <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Student Details</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="index-project-statistics.html">Student Report</a></li>
-                                <li><a href="index-project-details.html">Placement Report</a></li>
+                <img src="/assets/images/college-logo1.jpg" alt="" class="logo">
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
+                    <div class="search-bar">
+                        <div class="container position-relative">
+                            <input type="text" class="form-control border-0 shadow-none" placeholder="Search here">
+                            <button type="button" class="close" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu profile-notification ">
+                            <ul class="pro-body">
+                                <li><a href="user-profile.html" class="dropdown-item"><i class="fas fa-circle"></i>
+                                        Profile</a></li>
+                                <li><a href="email_inbox.html" class="dropdown-item"><i class="fas fa-circle"></i> My
+                                        Messages</a></li>
+                                <li><a href="auth-signin.html" class="dropdown-item"><i class="fas fa-circle"></i> Lock
+                                        Screen</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full calendar</span></a></li>        
-                        <li class="nav-item"><a href="/student/exam" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Exams</span></a></li>        
-                        <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-activity"></i></span><span class="pcoded-mtext">Prediction Model</span></a></li>        
-                        
-                    </ul>
-                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
                     </div>
-                    <div class="ps__rail-y" style="top: 0px; height: 665px; right: 0px;">
-                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 217px;"></div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <i class="icon feather icon-bell"></i>
+                            <span class="badge badge-pill badge-danger">5</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right notification">
+                            <div class="noti-head">
+                                <h6 class="d-inline-block m-b-0">Notifications</h6>
+                                <div class="float-right">
+                                    <a href="#!" class="m-r-10">mark as read</a>
+                                    <a href="#!">clear all</a>
+                                </div>
+                            </div>
+                            <ul class="noti-body ps">
+                                <li class="n-title">
+                                    <p class="m-b-0">NEW</p>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src="/assets/images/user/avatar-1.jpg"
+                                             alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>John Doe</strong><span class="n-time text-muted"><i
+                                                            class="icon feather icon-clock m-r-10"></i>5 min</span></p>
+                                            <p>New ticket Added</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="n-title">
+                                    <p class="m-b-0">EARLIER</p>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src="/assets/images/user/avatar-2.jpg"
+                                             alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>Joseph William</strong><span class="n-time text-muted"><i
+                                                            class="icon feather icon-clock m-r-10"></i>10 min</span></p>
+                                            <p>Prchace New Theme and make payment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src="/assets/images/user/avatar-1.jpg"
+                                             alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
+                                                            class="icon feather icon-clock m-r-10"></i>12 min</span></p>
+                                            <p>currently login</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src="/assets/images/user/avatar-2.jpg"
+                                             alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>Joseph William</strong><span class="n-time text-muted"><i
+                                                            class="icon feather icon-clock m-r-10"></i>30 min</span></p>
+                                            <p>Prchace New Theme and make payment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                </div>
+                                <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                    <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                                </div>
+                            </ul>
+                            <div class="noti-footer">
+                                <a href="#!">show all</a>
+                            </div>
+                        </div>
                     </div>
+                </li>
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?= str_replace('/', '', $user->admission_number) ?>.jpg"
+                                 class="img-radius" alt="User-Profile-Image">
+                            <span class="badge badge-pill badge-success">2</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="http://elive.sjcetpalai.ac.in/Uploads/Admission/<?= str_replace('/', '', $user->admission_number) ?>.jpg"
+                                     class="img-radius" alt="User-Profile-Image">
+                                <span>{{$user->name}}</span>
+                                <a href="{{ route('logout') }}" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="{{route('student.profile')}}" class="dropdown-item"><i
+                                                class="feather icon-user"></i> Profile</a></li>
+                                <li><a href="{{route('logout')}}" class="dropdown-item"><i
+                                                class="feather icon-log-out"></i> Logout</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="content-main  container">
+
+    <nav class="pcoded-navbar menupos-fixed menu-light">
+        <div class="navbar-wrapper content-main  container">
+            <div class="navbar-content scroll-div ps ps--active-y">
+                <ul class="nav pcoded-inner-navbar ">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Dashboard</label>
+                    </li>
+                    <li class="nav-item"><a href="{{route('student.profile')}}" class="nav-link "><span
+                                    class="pcoded-micon"><i class="feather icon-user"></i></span><span
+                                    class="pcoded-mtext">Profile</span></a></li>
+                    <li class="nav-item"><a href="/student/drive" class="nav-link "><span class="pcoded-micon"><i
+                                        class="feather icon-server"></i></span><span class="pcoded-mtext">Drives</span></a>
+                    </li>
+
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link "><span class="pcoded-micon"><i
+                                        class="feather icon-users"></i></span><span
+                                    class="pcoded-mtext">Student Details</span></a>
+                        <ul class="pcoded-submenu">
+                            <li><a href="index-project-statistics.html">Student Report</a></li>
+                            <li><a href="index-project-details.html">Placement Report</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i
+                                        class="feather icon-calendar"></i></span><span class="pcoded-mtext">Full calendar</span></a>
+                    </li>
+                    <li class="nav-item"><a href="/student/exam" class="nav-link "><span class="pcoded-micon"><i
+                                        class="feather icon-calendar"></i></span><span class="pcoded-mtext">Exams</span></a>
+                    </li>
+                    <li class="nav-item"><a href="full-calendar.html" class="nav-link "><span class="pcoded-micon"><i
+                                        class="feather icon-activity"></i></span><span class="pcoded-mtext">Prediction Model</span></a>
+                    </li>
+
+                </ul>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; height: 665px; right: 0px;">
+                    <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 217px;"></div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
 
-        <div class="pcoded-main-container">
-            <div class="pcoded-content">
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
 
             @yield('body')
 
 
-            </div>
         </div>
-
     </div>
 
+</div>
 
-    <script src="/assets/js/vendor-all.min.js"></script>
-    <script src="/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="/assets/js/pcoded.min.js"></script>
-    <script src="/assets/js/plugins/apexcharts.min.js"></script>
-    <script src="/assets/js/plugins/jquery.peity.min.js"></script>
-    <script src="/assets/js/plugins/jquery.knob.min.js"></script>
-    <script src="/assets/js/pages/jquery.knob-custom.min.js"></script>
-    <script src="/assets/plugins/vendors/d3/d3.min.js"></script>
-    <script src="/assets/plugins/vendors/c3-master/c3.min.js"></script>
-    <script src="/assets/plugins/vendors/sparkline/jquery.sparkline.min.js"></script>
-    <script src="/assets/plugins/vendors/raphael/raphael-min.js"></script>
-    <script src="/assets/plugins/vendors/morrisjs/morris.js"></script>
-    <script src="/assets/js/pages/dashboard-server.js"></script>
+
+<script src="/assets/js/vendor-all.min.js"></script>
+<script src="/assets/js/plugins/bootstrap.min.js"></script>
+<script src="/assets/js/pcoded.min.js"></script>
+<script src="/assets/js/plugins/apexcharts.min.js"></script>
+<script src="/assets/js/plugins/jquery.peity.min.js"></script>
+<script src="/assets/js/plugins/jquery.knob.min.js"></script>
+<script src="/assets/js/pages/jquery.knob-custom.min.js"></script>
+<script src="/assets/plugins/vendors/d3/d3.min.js"></script>
+<script src="/assets/plugins/vendors/c3-master/c3.min.js"></script>
+<script src="/assets/plugins/vendors/sparkline/jquery.sparkline.min.js"></script>
+<script src="/assets/plugins/vendors/raphael/raphael-min.js"></script>
+<script src="/assets/plugins/vendors/morrisjs/morris.js"></script>
+<script src="/assets/js/pages/dashboard-server.js"></script>
+@if(session()->has('error'))
+<script src="/assets/js/plugins/sweetalert.min.js"></script>
+<script>
+    swal("Error", "{{ session()->get('error') }}", "error");
+</script>
+@endif
+
+@if(session()->has('success'))
+<script src="/assets/js/plugins/sweetalert.min.js"></script>
+<script>
+    swal("Success", "{{ session()->get('success') }}", "success");
+</script>
+@endif
 
 </body>
 

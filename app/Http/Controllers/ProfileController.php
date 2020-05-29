@@ -21,7 +21,7 @@ class ProfileController extends Controller
         $user=Auth::user();
         $userdata= StudentDetail::where('admission_number',$user->admission_number)->firstOrFail();
         $student_details = StudentDetail::findOrFail($userdata->id);
-        return view('student.test', compact('user','userdata'));
+        return view('student.completeprofile', compact('user','userdata'));
         
     }
 
@@ -91,6 +91,8 @@ class ProfileController extends Controller
             $student_details->cert=1;
         }
         $student_details->save();
+
+        return back()->with("success","Profile updated");
     
     }
 

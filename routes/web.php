@@ -17,16 +17,15 @@ use App\StudentDetail;
 Route::get("/", "LoginController@index");
 Route::post("/", "LoginController@login");
 
-Route::get("/logout", "LoginController@logout");
+Route::get("/logout", "LoginController@logout")->name('logout');
 Route::get('/reset-password', function () {
     return view('reset-password');
 });
 
 
-
 Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 
-    
+
     // Route::get("/", "ProfileController@test1");
     // Route::post("/", "ProfileController@test2");
     ///////////////////////////////////////////
@@ -39,7 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     //todo>>>>
     Route::get("/drive/{id}/edit", "DriveController@edit");
     Route::put("/drive/{id}/edit", "DriveController@update");
-    
+
 
     ////////////////////////////////////////////////
 
@@ -71,12 +70,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get("/files", "FileUploadController@index")->name('admin.file');
     Route::get("/files/create", "FileUploadController@create")->name('admin.file.create');
     Route::post("/files/create", "FileUploadController@store")->name('admin.file.store');
-    Route::post("/fileaction","FileUploadController@file_action")->name('file_action');
+    Route::post("/fileaction", "FileUploadController@file_action")->name('file_action');
 
     /////////////////////////////////////////////////////
-    Route::get('/calendar',function(){
+    Route::get('/calendar', function () {
         return view('admin.calendar');
     })->name('calendar');
+
 
 
 });
@@ -98,19 +98,17 @@ Route::group(['prefix' => 'hod', 'middleware' => 'is_hod'], function () {
 });
 
 
-
-
 Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () {
-    
-    Route::get("/", "ProfileController@showStudentProfile");
-    Route::get("/fillprofile", "ProfileController@fillProfile");
+
+    Route::get("/", "ProfileController@showStudentProfile")->name('student.profile');
+    Route::get("/completeprofile", "ProfileController@fillProfile")->name('student.completeprofile');
     Route::post("/completeprofile", "ProfileController@completeProfile");
     Route::get("/exam", "ExamController@index_student");
     Route::get("/attend/{id}", "ExamController@attend");
     Route::post("/attend/{id}", "ExamController@attend");
     Route::delete("/attend/{id}", "ExamController@end");
-    Route::post("/eval/{id}","ExamController@evaluate");
-
+    Route::post("/eval/{id}", "ExamController@evaluate");
+/////////////////////////////////////////////////
     Route::get("/drive", "RegistrationController@index");
     Route::get("/drive/register/{id}", "RegistrationController@register");
     Route::post("/drive/register/{id}", "RegistrationController@savereg");
@@ -135,13 +133,13 @@ Route::group(['prefix' => 'faculty'], function () {
     Route::get('/', function () {
         return view('faculty.home');
     });
-    Route::get('/subjects','SubjectController@index');
-    Route::post('/subjects','SubjectController@store');
-    Route::get('/subjects/{id}','SubjectController@show')->name('subject.show');
-    Route::get('/subjects/{id}/questions/create','QuestionController@create')->name('question.create');
-    Route::post('/subjects/{id}/questions/create','QuestionController@store')->name('question.store');
-    Route::get('/subjects/delete/{id}','SubjectController@delete')->name('subject.delete');
-    Route::post('image/upload','QuestionController@imageHandler')->name('faculty.image.upload');
+    Route::get('/subjects', 'SubjectController@index');
+    Route::post('/subjects', 'SubjectController@store');
+    Route::get('/subjects/{id}', 'SubjectController@show')->name('subject.show');
+    Route::get('/subjects/{id}/questions/create', 'QuestionController@create')->name('question.create');
+    Route::post('/subjects/{id}/questions/create', 'QuestionController@store')->name('question.store');
+    Route::get('/subjects/delete/{id}', 'SubjectController@delete')->name('subject.delete');
+    Route::post('image/upload', 'QuestionController@imageHandler')->name('faculty.image.upload');
 
 });
 

@@ -9,18 +9,11 @@
             <div class="card-body  card2 pt-3">
                 <div class="row">
                     <div class="col-lg-9 col-md-9 f-18 font-weight-bold text-uppercase">Profile</div>
-                    <a href="#" data-toggle="modal" data-target=".add-task" class="col-lg-3 col-md-3 btn btn-rounded btn-primary waves-effect waves-light btn-block">Edit
+                    <a href="{{route('student.completeprofile')}}" class="col-lg-3 col-md-3 btn btn-rounded btn-primary waves-effect waves-light btn-block">Complete your
                         Profile</a>
-                    
+
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 f-18 font-weight-bold text-uppercase">Profile</div>
-                    <a href="/student/fillprofile"  class="col-lg-3 col-md-3 btn btn-rounded btn-primary waves-effect waves-light btn-block">Complete your
-                        Profile</a>
-                    
-                </div>
-                
+
             </div>
             <div class="card-body">
                 <div class="row">
@@ -57,43 +50,201 @@
                 </div>
             </div>
         </div>
-
         <div class="card">
-            <div class="card-body  card2 pt-5 pb-2">
+            <div class="card-body  card2 pt-3">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 f-18 font-weight-bold text-uppercase">Education
-                    </div>
+                    <div class="col-lg-9 col-md-9 f-18 font-weight-bold text-uppercase">Education</div>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 f-14 font-weight-bold m-b-20"><span class="fa fa-circle text-danger circle-tab mr-3"></span> {{$userdata->xii_yop}}</div>
-                    <div class="col-lg-4 col-md-6">
-                        <span class="font-bold text-dark">Computer engineering</span>
-                        <div class="clearfix"></div>
-                        <span class="mt-2 d-block">Master</span>
-                    </div>
-                    <div class="col-lg-4 col-md-6 font-weight-bold m-b-20">{{$userdata->x_institue}}
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h6 class="mb-0"><a href="#!" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">Class X</a></h6>
                         </div>
-                </div>
-                <div class="boder-li"></div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 f-14 font-weight-bold m-b-20"><span class="fa fa-circle text-danger circle-tab mr-3"></span>September 2012 -
-                        April 2014</div>
-                    <div class="col-lg-4 col-md-6 ">
-                        <span class="font-bold text-dark">Google corporation </span>
-                        <div class="clearfix"></div>
-                        <span class="mt-2 d-block">Bachelor</span>
+                        <div id="collapseOne" class="card-body collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">CGPA
+                                </div>
+                                <div class="col">{{$userdata->x_cgpa}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduation Country</div>
+                                <div class="col">{{$userdata->x_country}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduating State</div>
+                                <div class="col">{{$userdata->x_state}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">City</div>
+                                <div class="col">{{$userdata->x_city}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Institute Name</div>
+                                <div class="col">{{$userdata->x_institue}}</div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Board of Study</div>
+                                <div class="col">{{$userdata->x_board}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Year of Passing</div>
+                                <div class="col">{{$userdata->x_yop}}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-md-6  font-weight-bold">Imperial College London</div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h6 class="mb-0"><a href="#!" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Class Xii</a></h6>
+                        </div>
+                        <div id="collapseTwo" class="card-body collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">CGPA
+                                </div>
+                                <div class="col">{{$userdata->xii_cgpa}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduation Country</div>
+                                <div class="col">{{$userdata->xii_country}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduating State</div>
+                                <div class="col">{{$userdata->xii_state}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">City</div>
+                                <div class="col">{{$userdata->xii_city}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Institute Name</div>
+                                <div class="col">{{$userdata->xii_institue}}</div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Board of Study</div>
+                                <div class="col">{{$userdata->xii_board}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Year of Passing</div>
+                                <div class="col">{{$userdata->xii_yop}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h6class="mb-0"><a href="#!" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Diploma</a></h6>
+                        </div>
+                        <div id="collapseThree" class="card-body collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">CGPA
+                                </div>
+                                <div class="col">{{$userdata->dip_cgpa}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduation Country</div>
+                                <div class="col">{{$userdata->dip_country}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduating State</div>
+                                <div class="col">{{$userdata->dip_state}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">City</div>
+                                <div class="col">{{$userdata->dip_city}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Institute Name</div>
+                                <div class="col">{{$userdata->dip_institute}}</div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">University Name</div>
+                                <div class="col">{{$userdata->dip_university}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Year of Passing</div>
+                                <div class="col">{{$userdata->dip_yop}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h6 class="mb-0"><a href="#!" class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Bachelor Degree</a></h6>
+                        </div>
+                        <div id="collapseFour" class="card-body collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">CGPA</div>
+                                <div class="col">{{$userdata->bach_cgpa}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduation Country</div>
+                                <div class="col">{{$userdata->bach_country}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduating State</div>
+                                <div class="col">{{$userdata->bach_state}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">City</div>
+                                <div class="col">{{$userdata->bach_city}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Institute Name</div>
+                                <div class="col">{{$userdata->bach_institute}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">University Name</div>
+                                <div class="col">{{$userdata->bach_university}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Year of Passing</div>
+                                <div class="col">{{$userdata->bach_yop}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h6 class="mb-0"><a href="#!" class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Master's Degree</a></h6>
+                        </div>
+                        <div id="collapseFive" class="card-body collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">CGPA
+                                </div>
+                                <div class="col">{{$userdata->mast_cgpa}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduation Country</div>
+                                <div class="col">{{$userdata->mast_country}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Graduating State</div>
+                                <div class="col">{{$userdata->mast_state}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">City</div>
+                                <div class="col">{{$userdata->mast_city}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Institute Name</div>
+                                <div class="col">{{$userdata->mast_institute}}</div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">University Name</div>
+                                <div class="col">{{$userdata->mast_university}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3 font-weight-bold text-dark">Year of Passing</div>
+                                <div class="col">{{$userdata->mast_yop}}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
+
+
         </div>
     </div>
-</div>
 
-
-</div>
-</div>
-
-@endsection
+    @endsection
