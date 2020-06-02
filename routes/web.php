@@ -36,8 +36,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get("/drive/{id}", "DriveController@show");
     Route::get("/drive/delete/{id}", "DriveController@destroy");
     //todo>>>>
-    Route::get("/drive/{id}/edit", "DriveController@edit");
-    Route::put("/drive/{id}/edit", "DriveController@update");
+    Route::get("/drive/edit/{id}", "DriveController@edit");
+    Route::post("/drive/edit/{id}", "DriveController@update");
     
 
     ////////////////////////////////////////////////
