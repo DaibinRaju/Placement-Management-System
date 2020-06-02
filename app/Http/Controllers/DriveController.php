@@ -90,6 +90,10 @@ class DriveController extends Controller
     public function edit(Drive $drive)
     {
         //
+        $drive=Drive::findOrFail($id);
+        //dd($drive);
+        //dd($drive['id']);
+        return view('admin.driveedit',compact('drive'));
     }
 
     /**
@@ -102,7 +106,20 @@ class DriveController extends Controller
     public function update(Request $request, Drive $drive)
     {
         //
+        $drive=Drive::findOrFail($request->id);
+
+        //dd($drive);
+        $drive->company_name=$request->company_name;
+        $drive->description=$request->description;
+        $drive->date=$request->date;
+        $drive->venue=$request->venue;
+        $drive->last_date_to_register=$request->last_date_to_register;
+        $drive->save();
+
+         return redirect()->action('DriveController@show',['id' => $request->id])->with('sucess','drive details updated!');
     }
+
+    
 
     /**
      * Remove the specified resource from storage.
