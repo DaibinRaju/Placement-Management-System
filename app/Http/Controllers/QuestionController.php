@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
+use App\Subject;
+use App\Question;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -32,9 +35,150 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        return($request->question);
+        if($request->has('form11')){
+            $request->validate([
+                'name'=>'required',
+                'question'=>'required',
+                'option1'=>'required',
+                'option2'=>'required',
+                'option3'=>'required',
+                'option4'=>'required',
+                'correct'=>'required',
+            ]);
+
+            $subject=Subject::findOrFail($id);
+            $question=Question::create([
+                'name'=>$request->name,
+                'question'=>$request->question,
+                'type'=>"MCQ",
+                'subject_id'=>$subject->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option1,
+                'isCorrect'=>1==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option2,
+                'isCorrect'=>2==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option3,
+                'isCorrect'=>3==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option4,
+                'isCorrect'=>4==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            return back()->with("success","Question created under this subject");
+
+        }
+
+        if($request->has('form12')){
+            $request->validate([
+                'name'=>'required',
+                'question'=>'required',
+                'option1'=>'required',
+                'option2'=>'required',
+                'option3'=>'required',
+                'option4'=>'required',
+                'correct'=>'required',
+            ]);
+
+            $subject=Subject::findOrFail($id);
+            $question=Question::create([
+                'name'=>$request->name,
+                'question'=>$request->question,
+                'type'=>"MCQ",
+                'subject_id'=>$subject->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option1,
+                'isCorrect'=>1==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option2,
+                'isCorrect'=>2==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option3,
+                'isCorrect'=>3==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->option4,
+                'isCorrect'=>4==$request->correct,
+                'question_id'=>$question->id
+            ]);
+
+            return redirect()->route('subject.show',$subject)->with("success","Question created under this subject");
+
+        }
+
+        if($request->has('form21')){
+            $request->validate([
+                'name'=>'required',
+                'question'=>'required',
+                'answer'=>'required',
+            ]);
+
+            $subject=Subject::findOrFail($id);
+            $question=Question::create([
+                'name'=>$request->name,
+                'question'=>$request->question,
+                'type'=>"Input type",
+                'subject_id'=>$subject->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->answer,
+                'isCorrect'=>1,
+                'question_id'=>$question->id
+            ]);
+
+            return back()->with("success","Question created under this subject");
+        }
+
+        if($request->has('form22')){
+            $request->validate([
+                'name'=>'required',
+                'question'=>'required',
+                'answer'=>'required',
+            ]);
+
+            $subject=Subject::findOrFail($id);
+            $question=Question::create([
+                'name'=>$request->name,
+                'question'=>$request->question,
+                'type'=>"Input type",
+                'subject_id'=>$subject->id
+            ]);
+
+            Answer::create([
+                'option'=>$request->answer,
+                'isCorrect'=>1,
+                'question_id'=>$question->id
+            ]);
+
+            return redirect()->route('subject.show',$subject)->with("success","Question created under this subject");
+        }
+        
     }
 
     /**

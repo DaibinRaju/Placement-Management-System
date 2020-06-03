@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = [
-        'question', 'op1', 'op2', 'op3', 'op4', 'correct','exam_id'
-    ];
+    protected $guarded=[];
+
+    public function answer(){
+        return $this->hasMany(Answer::class);
+    }
+
+    public function subject(){
+        return $this->belongsTo(Subject::class);
+    }
 }

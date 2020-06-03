@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 use Illuminate\Support\Facades\Auth;
 use App\StudentDetail;
@@ -135,10 +135,10 @@ Route::group(['prefix' => 'faculty'], function () {
     });
     Route::get('/subjects', 'SubjectController@index');
     Route::post('/subjects', 'SubjectController@store');
-    Route::get('/subjects/{id}', 'SubjectController@show')->name('subject.show');
+    Route::get('/subjects/{subject}', 'SubjectController@show')->name('subject.show');
     Route::get('/subjects/{id}/questions/create', 'QuestionController@create')->name('question.create');
     Route::post('/subjects/{id}/questions/create', 'QuestionController@store')->name('question.store');
-    Route::get('/subjects/delete/{id}', 'SubjectController@delete')->name('subject.delete');
+    Route::get('/subjects/delete/{id}', 'SubjectController@destroy')->name('subject.delete');
     Route::post('image/upload', 'QuestionController@imageHandler')->name('faculty.image.upload');
 
 });

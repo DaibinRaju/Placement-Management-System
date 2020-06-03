@@ -62,7 +62,8 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        return view('faculty.subjectshow');
+        $questions=$subject->question;
+        return view('faculty.subjectshow',compact('subject','questions'));
     }
 
     /**
@@ -94,9 +95,11 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy(Request $request)
     {
-        //
+        $subject=Subject::findOrFail($request->id);
+        $subject->delete();
+        return back()->with('success','Subject deleted');
     }
 
     public function questionCreate(Request $request)

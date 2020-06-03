@@ -34,20 +34,39 @@
                             <div class="row form-group col-md-12 m-b-20">
                                 <label for="option1">Option 1</label>
                                 <input type="text" name="option1" class="form-control" id="option1" placeholder="Enter option 1" required>
+                                <div class="radio radio-success d-inline m-r-10">
+                                    <input type="radio" id="switch-s-1" name="correct" value="1">
+                                    <label for="switch-s-1" class="cr">Correct answer</label>
+                                </div>
                             </div>
                             <div class="row form-group col-md-12 m-b-20">
                                 <label for="option2">Option 2</label>
                                 <input type="text" name="option2" class="form-control" id="option2" placeholder="Enter option 2" required>
+                                <div class="radio radio-success d-inline m-r-10">
+                                    <input type="radio" id="switch-s-2" name="correct" value="2">
+                                    <label for="switch-s-2" class="cr">Correct answer</label>
+                                </div>
                             </div>
                             <div class="row form-group col-md-12 m-b-20">
                                 <label for="option3">Option 3</label>
                                 <input type="text" name="option3" class="form-control" id="option3" placeholder="Enter option 3" required>
+                                <div class="radio radio-success d-inline m-r-10">
+                                    <input type="radio" id="switch-s-3" name="correct" value="3">
+                                    <label for="switch-s-3" class="cr">Correct answer</label>
+                                </div>
                             </div>
                             <div class="row form-group col-md-12 m-b-20">
                                 <label for="option4">Option 4</label>
                                 <input type="text" name="option4" class="form-control" id="option4" placeholder="Enter option 4" required>
+                                <div class="radio radio-success d-inline m-r-10">
+                                    <input type="radio" id="switch-s-4" name="correct" value="4">
+                                    <label for="switch-s-4" class="cr">Correct answer</label>
+                                </div>
+
                             </div>
-                            <button type="submit" class="btn  btn-primary">Submit</button>
+                            <button type="submit" name="form11" class="btn  btn-primary">Save and next</button>
+                            <button type="submit" name="form12" class="btn  btn-primary">Save and exit</button>
+
                         </form>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -66,7 +85,8 @@
                                 <label for="answer">Correct answer</label>
                                 <input type="text" name="answer" class="form-control" id="answer" placeholder="Enter correct answer" required>
                             </div>
-                            <button type="submit" class="btn  btn-primary">Submit</button>
+                            <button type="submit" name="form21" class="btn  btn-primary">Save and next</button>
+                            <button type="submit" name="form22" class="btn  btn-primary">Save and exit</button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -79,7 +99,7 @@
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn  btn-primary">Submit</button>
+                            <button type="submit" name="form3" class="btn  btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>

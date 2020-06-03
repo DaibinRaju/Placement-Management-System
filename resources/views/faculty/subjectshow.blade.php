@@ -2,7 +2,7 @@
 @section('body')
 
 
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<!-- <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,7 +11,7 @@
             </div>
 
             <form method="post">
-                @csrf
+                
                 <div class="modal-body">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item">
@@ -76,7 +76,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <div class="row">
     <div class="col-sm-12">
         <div class="page-titles">
@@ -89,13 +89,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class=" col-md-3 col-sm-3">
-                            <h5 class="card-title float-left align-self-center ">Departments</h5>
+                            <h5 class="card-title float-left align-self-center ">Questions</h5>
                         </div>
                         <div class="col-md-9 col-sm-9">
                             <div class="float-right d-xl-inline-block d-lg-inline-block">
                                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button> -->
 
-                                <a data-toggle="modal" href="#" data-target=".bd-example-modal-xl" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Questions</a>
+                                <a href="{{route('question.create',$subject)}}" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Questions</a>
                             </div>
                         </div>
                     </div>
@@ -107,15 +107,27 @@
                             <thead>
                                 <tr>
 
-                                    <th>Department Id</th>
-                                    <th>Department Name</th>
-                                    <th>Created At</th>
+                                    <th>Question No</th>
+                                    <th>Question Name</th>
+                                    <th>Type</th>
                                     <th>Actions</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                
+                                @foreach($questions as $key=>$question)
+                                <tr>
+                                    <td>{{++$key}}</td>
+                                    <td>{{$question['name']}}</td>
+                                    <td>{{$question['type']}}</td>
+                                    <td>
+                                        <a href="/admin/questiones/{{$question['id']}}"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a>
+                                        <a id="delete" onclick="verify()" href="/admin/questiones/delete/{{$question['id']}}"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                
                             </tbody>
                         </table>
                     </div>

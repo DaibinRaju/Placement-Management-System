@@ -118,12 +118,13 @@
             <div class="col-sm-2 sidenav">
                 <h4>Sections</h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#section1">Home</a></li>
-                    <li><a href="#section2">Friends</a></li>
-                    <li><a href="#section3">Family</a></li>
-                    <li><a href="#section3">Photos</a></li>
+                    <li class="active"><a href="#section1">Verbal Ablity</a></li>
+                    <li><a href="#section2">Arithmetic Ablity</a></li>
+                    <li><a href="#section3">Logical Ablity</a></li>
+                    <li><a href="#section3">Programming Ablity</a></li>
                 </ul><br>
 
+                
             </div>
             <div class="col-sm-8 text-left">
                 <form method="post">
