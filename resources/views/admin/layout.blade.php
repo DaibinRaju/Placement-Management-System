@@ -886,6 +886,13 @@
     </script>
     @endif
 
+    @if(session()->has('info'))
+    <script src="/assets/js/plugins/sweetalert.min.js"></script>
+    <script>
+        swal("Info", "{{ session()->get('info') }}", "info");
+    </script>
+    @endif
+
 </body>
 
 </html>

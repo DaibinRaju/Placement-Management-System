@@ -7,19 +7,16 @@
             <div class="p-0">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-
                         <div class="card">
                             <div class="card-body">
+                            <div class="float-right d-xl-inline-block d-lg-inline-block">
+                                    <a href="/admin/training/edit/{{ $trainingdata->id }}" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Edit Training</a>
+                                </div>
                                 <div class="float-right d-xl-inline-block d-lg-inline-block">
                                     <a href="/admin/training" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Training Dashboard</a>
                                 </div>
                                 <h5 class="card-title float-left align-self-center tasks statistics text-uppercase">Training details</h5>
                                 <div class="clearfix"></div>
-                                @if(session()->has('data'))
-                                <div class="alert alert-warning" role="alert">
-                                    {{ session('data') }}
-                                </div>
-                                @endif
                                 <div class="m-t-20 no-block">
                                     <div class="row f-16">
                                         <div class="col-lg-2 col-md-3 col-sm-12"> <span class="weight-500 text-dark">Training Name</span> </div>
@@ -76,6 +73,7 @@
                                                 <th>Event Type </th>
                                                 <th>Marked by</th>
                                                 <th>Date</th>
+                                                <th>Session</th>
                                                 <th>MARK</th>
                                                 <th>VIEW</th>
                                             </tr>
@@ -86,6 +84,7 @@
                                                 <td class="font-bold">Placement Training</td>
                                                 <td>{{ $row['marked_by'] }}</td>
                                                 <td id="date">{{ $row['date'] }}</td>
+                                                <td id="date">{{ $row['session'] }}</td>
                                                 <td><a href="attendance/{{$row['id']}}"><i class="fas fa-marker" aria-hidden="true"></a></i></td>
                                                 <td><a href="viewattendance/{{$row['id']}}"><i class="fas fa-eye" aria-hidden="true"></i></a></td>
                                             </tr>

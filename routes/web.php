@@ -59,7 +59,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::post('/training/create', 'TrainingController@store');
     Route::get('/training/{id}', 'TrainingController@show');
     Route::get('/training/delete/{id}', 'TrainingController@destroy');
+    Route::get('/training/edit/{id}', 'TrainingController@edit');
+    Route::post('/training/edit/{id}', 'TrainingController@update');
+
     ///////////////////////////////////////////////
+    Route::get('/calendar',"CalendarController@DisplayEvents")->name('calendar');
+    Route::post('/calendar',"CalendarController@AddEvent");
+
+    //////////////////////////////////////////////
     Route::get('/batches', 'BatchController@index');
     Route::post('/batches', 'BatchController@store');
     ////////////////////////////////////////////////
