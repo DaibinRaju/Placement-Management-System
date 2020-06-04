@@ -118,7 +118,7 @@ class RegistrationController extends Controller
         
         Registeration::create([
             'drive_id' =>$id,
-            'student_id' =>$user->id,
+            'user_id' =>$user->id,
             'data' => serialize($data)
         ]);
 

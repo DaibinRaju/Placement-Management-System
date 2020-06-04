@@ -29,6 +29,8 @@ class CreateRegisterationsTable extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
+
+            //$table->unique('drive_id','user_id');
         });
 
        

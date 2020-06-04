@@ -81,8 +81,9 @@ class DriveController extends Controller
     public function show($id)
     {
         $drive= Drive::findOrFail($id);
+        $registrations=$drive->registration;
         $files=DriveFile::where('drive_id',$id)->get();
-        return view('admin.driveshow',compact('drive','files'));
+        return view('admin.driveshow',compact('drive','files','registrations'));
     }
 
     /**

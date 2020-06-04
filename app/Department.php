@@ -9,6 +9,6 @@ class Department extends Model
     protected $guarded=[];
 
     public function user(){
-        
+    
     }
 }

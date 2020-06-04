@@ -40,7 +40,7 @@ class User extends Authenticatable
     ];
 
     public function department(){
-        
+        return $this->belongsTo(Department::class);
     }
 
     public function subject(){
@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function exam(){
         return $this->hasMany(Exam::class);
     }
+
+    // public function drive(){
+    //     return $this->hasMany(Drive::class);
+    // }
 }
