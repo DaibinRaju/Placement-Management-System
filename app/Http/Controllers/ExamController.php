@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\StudentDetail;
@@ -20,9 +21,10 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::all()->toArray();
+        $exams = Exam::all();
+        
         //dd($exams);
-        return view('admin.exam', compact('exams'));
+        return view('faculty.exam', compact('exams'));
     }
 
     /**
@@ -32,7 +34,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        return view('admin.examcreate');
+        return view('faculty.examcreate');
     }
 
     /**
@@ -44,6 +46,7 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         //dd($request);
+        $user=Auth::user();
 
         $exam = Exam::create([
             'name' => $request->name,
@@ -52,32 +55,19 @@ class ExamController extends Controller
             'act_time' => $request->act_time,
             'exp_date' => $request->exp_date,
             'exp_time' => $request->exp_time,
-            'mark' => $request->mark,
-            'nmark' => $request->nmark,
             'time' => $request->time,
-            'nsection' => $request->nSection,
+            'user_id'=> $user->id,
         ]);
 
-        if ($request->has('file1')) {
-            Excel::import(new QuestionsImport($exam->id), request()->file('file1'));
-        }
-        if ($request->has('file2')) {
-            Excel::import(new QuestionsImport($exam->id), request()->file('file2'));
-        }
-        if ($request->has('file3')) {
-            Excel::import(new QuestionsImport($exam->id), request()->file('file3'));
-        }
-        if ($request->has('file4')) {
-            Excel::import(new QuestionsImport($exam->id), request()->file('file4'));
-        }
-        if ($request->has('file5')) {
-            Excel::import(new QuestionsImport($exam->id), request()->file('file5'));
-        }
+        // if ($request->has('file1')) {
+        //     Excel::import(new QuestionsImport($exam->id), request()->file('file1'));
+        // }
+        
 
         // if($request->has('file2')){
         //    Excel::import(new QuestionsImport, request()->file('file2'));
         // }
-        return redirect('/admin/exam')->with("success","Exam created");
+        return redirect('/faculty/exam')->with("success","Exam created");
     }
 
     /**
@@ -88,8 +78,10 @@ class ExamController extends Controller
      */
     public function show($id)
     {
-        $exam = Exam::where('id', $id)->firstOrFail();
-        return view('admin.examshow', compact('exam'));
+        $exam = Exam::findOrFail($id);
+        $sections=$exam->section;
+        $subjects=User::find(Auth::user()->id)->subject;
+        return view('faculty.examshow', compact('exam','subjects','sections'));
     }
 
     /**

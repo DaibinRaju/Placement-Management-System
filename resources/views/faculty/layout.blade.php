@@ -833,14 +833,9 @@
                         <li class="nav-item pcoded-menu-caption">
                             <label>Dashboard</label>
                         </li>
-                        <li class="nav-item active pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Placements</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="index-project-statistics.html">Active</a></li>
-                                <li><a href="index-project-details.html">Expired</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a href="/faculty/drive" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Drives</span></a></li>
                         <li class="nav-item"><a href="/faculty/subjects" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Subjects</span></a></li>
+                        <li class="nav-item"><a href="{{route('faculty.exam')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Exams</span></a></li>
                         <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
                         <li class="nav-item"><a href="image_crop.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-scissors"></i></span><span class="pcoded-mtext">Image cropper</span></a></li>
                         <li class="nav-item pcoded-menu-caption">

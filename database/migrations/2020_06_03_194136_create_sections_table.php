@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExamsTable extends Migration
+class CreateSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,23 @@ class CreateExamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('exams', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('password');
-            $table->date('act_date');
-            $table->time('act_time');
-            $table->date('exp_date');
-            $table->time('exp_time');
-            $table->integer('time');
-            $table->integer('nsection')->default(0);
-            $table->unsignedBigInteger('user_id');
+            $table->integer('mark');
+            $table->integer('nmark');
+            $table->unsignedBigInteger('subject_id');
+            $table->unsignedBigInteger('exam_id');
             $table->timestamps();
 
-            $table->foreign('user_id')
+            $table->foreign('subject_id')
                 ->references('id')
-                ->on('users')
+                ->on('subjects')
+                ->onDelete('cascade');
+
+            $table->foreign('exam_id')
+                ->references('id')
+                ->on('exams')
                 ->onDelete('cascade');
         });
     }
@@ -40,6 +41,6 @@ class CreateExamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exams');
+        Schema::dropIfExists('sections');
     }
 }
