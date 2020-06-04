@@ -8,9 +8,9 @@
             <div class="row">
 
                 @foreach($exams as $exam)
-                
-                    <div class="col-md-6">
-                        <div class="card user-card user-card-2 shape-left">
+
+                <div class="col-md-6">
+                    <div class="card user-card user-card-2 shape-left">
                         <a href="attend/{{$exam->id}}">
                             <div class="card-header border-0 p-2 pb-0">
                                 <div class="cover-img-block">
@@ -22,6 +22,7 @@
                                 <div class="text-center">
                                     <h6 class="mb-1 mt-3"></h6>
                                     <p class="mb-3 text-muted">{{$exam->name}}</p>
+                                    <p>hello test</p>
 
                                 </div>
                                 <hr class="wid-80 b-wid-3 my-4">
@@ -40,10 +41,10 @@
                                     </div>
                                 </div>
                             </div>
-                            </a>
-                        </div>
+                        </a>
                     </div>
-                
+                </div>
+
                 @endforeach
             </div>
         </div>

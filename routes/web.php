@@ -80,9 +80,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::post("/fileaction", "FileUploadController@file_action")->name('file_action');
 
     /////////////////////////////////////////////////////
-    Route::get('/calendar', function () {
-        return view('admin.calendar');
-    })->name('calendar');
+    // Route::get('/calendar', function () {
+    //     return view('admin.calendar');
+    // })->name('calendar');
 
 
 
@@ -120,14 +120,8 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
     Route::get("/drive/register/{id}", "RegistrationController@register");
     Route::post("/drive/register/{id}", "RegistrationController@savereg");
     // Route::get("/test", "ExamController@test");
-    Route::get('/test', function () {
-        $user = Auth::user();
-        $userdata = StudentDetail::where('admission_number', $user->admission_number)->firstOrFail();
-        //dd($userdata);
-        return view('student.test', compact('user', 'userdata'));
-        // return view('student.test');
-    });
-
+    
+    Route::view('/test','exam.host');
     Route::get('/lay', function () {
         $user = Auth::user();
         $userdata = StudentDetail::where('admission_number', $user->admission_number)->firstOrFail();
@@ -136,7 +130,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
     });
 });
 
-Route::group(['prefix' => 'faculty'], function () {
+Route::group(['prefix' => 'faculty', 'middleware' => 'is_faculty'], function () {
     Route::get('/', function () {
         return view('faculty.home');
     });
@@ -147,6 +141,15 @@ Route::group(['prefix' => 'faculty'], function () {
     Route::post('/subjects/{id}/questions/create', 'QuestionController@store')->name('question.store');
     Route::get('/subjects/delete/{id}', 'SubjectController@destroy')->name('subject.delete');
     Route::post('image/upload', 'QuestionController@imageHandler')->name('faculty.image.upload');
+
+    /////////////////////////////////////////////
+
+    Route::get("/exam", "ExamController@index")->name('faculty.exam');
+    Route::get("/exam/create", "ExamController@create")->name('faculty.exam.create');
+    Route::post("/exam/create", "ExamController@store");
+    Route::get('/exam/{id}', 'ExamController@show')->name('faculty.exam.show');
+    Route::post('/exam/{id}', 'SectionController@create');
+    Route::get('/exam/delete/{id}', 'ExamController@destroy')->name('faculty.exam.delete');
 
 });
 
