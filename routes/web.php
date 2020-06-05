@@ -102,6 +102,7 @@ Route::group(['prefix' => 'hod', 'middleware' => 'is_hod'], function () {
     Route::post('/create-drive', 'DriveController@create');
     Route::get("/faculty", "FacultyController@index");
     Route::post("/faculty", "FacultyController@store");
+    Route::get('/calendar',"CalendarController@CalenderHod")->name('hod.calendar');
 });
 
 
@@ -128,6 +129,8 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
         //dd($userdata);
         return view('student.layout', compact('user', 'userdata'));
     });
+    Route::get('/calendar',"CalendarController@CalenderStudent")->name('student.calendar');
+
 });
 
 Route::group(['prefix' => 'faculty', 'middleware' => 'is_faculty'], function () {
@@ -150,6 +153,8 @@ Route::group(['prefix' => 'faculty', 'middleware' => 'is_faculty'], function () 
     Route::get('/exam/{id}', 'ExamController@show')->name('faculty.exam.show');
     Route::post('/exam/{id}', 'SectionController@create');
     Route::get('/exam/delete/{id}', 'ExamController@destroy')->name('faculty.exam.delete');
+    Route::get('/calendar',"CalendarController@CalenderFaculty")->name('faculty.calendar');
+
 
 });
 

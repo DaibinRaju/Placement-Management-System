@@ -2,23 +2,17 @@
 <html lang="en">
 
 <head>
-    <title>Mintone - Bootstrap 4 Admin Dashboard Template</title>
-
-
-
+    <title>SJCET PMS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-
     <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
-
     <link href="/assets/plugins/vendors/morrisjs/morris.css" rel="stylesheet">
-
     <link href="/assets/plugins/vendors/c3-master/c3.min.css" rel="stylesheet">
-
+    @yield('extracss')
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/plugins/dropzone.min.css">
     <style type="text/css">
@@ -842,7 +836,7 @@
                         </li>
                         <li class="nav-item"><a href="/hod/faculty" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Faculties</span></a></li>
                         <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
-                        <li class="nav-item"><a href="image_crop.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-scissors"></i></span><span class="pcoded-mtext">Image cropper</span></a></li>
+                        <li class="nav-item"><a href="{{route('hod.calendar')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Calendar</span></a></li>
                         <li class="nav-item pcoded-menu-caption">
                             <label>Other</label>
                         </li>
@@ -878,6 +872,7 @@
     <script src="/assets/plugins/vendors/morrisjs/morris.js"></script>
     <script src="/assets/js/pages/dashboard-server.js"></script>
     <script src="/assets/js/plugins/dropzone-amd-module.min.js"></script>
+    @yield('extrajs')
 
     @if(session()->has('error'))
     <script src="/assets/js/plugins/sweetalert.min.js"></script>

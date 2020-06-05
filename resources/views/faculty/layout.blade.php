@@ -18,7 +18,7 @@
     <link href="/assets/plugins/vendors/morrisjs/morris.css" rel="stylesheet">
 
     <link href="/assets/plugins/vendors/c3-master/c3.min.css" rel="stylesheet">
-    @yield('css')
+    @yield('extracss')
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/plugins/dropzone.min.css">
     <style type="text/css">
@@ -837,7 +837,7 @@
                         <li class="nav-item"><a href="/faculty/subjects" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Subjects</span></a></li>
                         <li class="nav-item"><a href="{{route('faculty.exam')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Exams</span></a></li>
                         <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
-                        <li class="nav-item"><a href="image_crop.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-scissors"></i></span><span class="pcoded-mtext">Image cropper</span></a></li>
+                        <li class="nav-item"><a href="{{route('faculty.calendar')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Calendar</span></a></li>
                         <li class="nav-item pcoded-menu-caption">
                             <label>Other</label>
                         </li>
@@ -859,7 +859,7 @@
             </div>
         </div>
     </div>
-    @yield('js')
+    @yield('extrajs')
     <script src="/assets/js/vendor-all.min.js"></script>
     <script src="/assets/js/plugins/bootstrap.min.js"></script>
     <script src="/assets/js/pcoded.min.js"></script>
