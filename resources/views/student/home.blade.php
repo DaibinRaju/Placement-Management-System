@@ -13,6 +13,12 @@
                         Profile</a>
 
                 </div>
+                &nbsp;
+                <div class="row">
+                <div class="col-lg-9 col-md-9 f-18 font-weight-bold text-uppercase"></div>
+                <a href="{{route('student.editprofile')}}" class="col-lg-3 col-md-3 btn btn-rounded btn-primary waves-effect waves-light btn-block">Edit
+                        Profile</a>
+                </div>
 
             </div>
             <div class="card-body">

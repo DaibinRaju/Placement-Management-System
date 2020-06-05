@@ -25,6 +25,11 @@ class ProfileController extends Controller
         
     }
 
+    public function editProfile(){
+        $user=Auth::user();
+        $userdata= StudentDetail::where('admission_number',$user->admission_number)->firstOrFail();
+        return view(''.compact());
+    }
 
 
     public function completeProfile(Request $request){
