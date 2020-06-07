@@ -112,6 +112,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
     Route::get("/completeprofile", "ProfileController@fillProfile")->name('student.completeprofile');
     Route::post("/completeprofile", "ProfileController@completeProfile");
     Route::get("/editprofile", "ProfileController@editProfile")->name('student.editprofile');
+    Route::post("/editprofile", "ProfileController@editProfile2");
     Route::get("/exam", "ExamController@index_student");
     Route::get("/attend/{id}", "ExamController@attend");
     Route::post("/attend/{id}", "ExamController@attend");
