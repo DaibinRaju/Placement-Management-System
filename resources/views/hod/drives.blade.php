@@ -17,7 +17,7 @@
 			<div class="card widget-card-user">
 				<div class="card-body p-b-0">
 					<div class="card-user">
-						<span class="badge badge-success float-right"><a style="color:inherit;" href="/hod/drive/{{$drive->id}}">VIEW</a></span>
+						<span class="badge badge-success float-right"><a style="color:inherit;" href="/student/drive/register/{{$drive->id}}"> REGISTER</a></span>
 						<!-- <img src="/assets/images/my/tcs.png" alt="" class="img-radius wid-80"> -->
 						<h4 class="p-t-10 p-b-10 m-t-0">{{$drive->company_name}}</h4>
 						<span class="text-c-green f-14">Mumbai India</span>

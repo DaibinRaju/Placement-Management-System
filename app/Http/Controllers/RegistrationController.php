@@ -26,6 +26,30 @@ class RegistrationController extends Controller
         return view('student.drives', compact('user', 'userdata','drives'));
     }
 
+    public function hod_drives(){
+        $drives=Drive::all();
+        return view('hod.home', compact('drives'));
+
+    }
+
+    public function hod_drive_view($id){
+        $user = Auth::user();
+    
+        $drive= Drive::findOrFail($id);
+        $registrations=$drive->registration;
+        $registered_students=[];
+        foreach ($registrations as $register){
+            if(($register->user->department_id)==($user->department_id)){
+                array_push($registered_students,$register);
+            }
+            // dd($register->user->department_id,$user->department_id);
+
+        }
+        // dd($registered_students);
+        return view('hod.driveshow',compact('drive','registered_students'));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

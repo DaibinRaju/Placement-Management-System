@@ -12,6 +12,8 @@
  */
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DriveAnnouncement;
 use App\StudentDetail;
 
 Route::get("/", "LoginController@index");
@@ -89,9 +91,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 });
 
 Route::group(['prefix' => 'hod', 'middleware' => 'is_hod'], function () {
-    Route::get('/', function () {
-        return view('hod.home');
-    });
+    Route::get('/','RegistrationController@hod_drives');
+    Route::get('/drive/{id}','RegistrationController@hod_drive_view');
     Route::get('/file-upload', function () {
         return view('hod.fileupload');
     });
@@ -103,6 +104,7 @@ Route::group(['prefix' => 'hod', 'middleware' => 'is_hod'], function () {
     Route::get("/faculty", "FacultyController@index");
     Route::post("/faculty", "FacultyController@store");
     Route::get('/calendar',"CalendarController@CalenderHod")->name('hod.calendar');
+    // Route::get('/drives',"CalendarController@CalenderHod")->name('hod.drives');
 });
 
 
