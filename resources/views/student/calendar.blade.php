@@ -126,7 +126,7 @@
             }, */
             @foreach ($drives as $drive)
             {
-                title: '{{ $drive['company_name'] }}',
+                title: '{{ $drive['company_name'] }} Drive',
                 start: '{{ $drive['date'] }}T{{ $drive['time'] }}',
             }
             ,

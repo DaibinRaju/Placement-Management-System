@@ -12,8 +12,6 @@
  */
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\DriveAnnouncement;
 use App\StudentDetail;
 
 Route::get("/", "LoginController@index");
@@ -31,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     // Route::get("/", "ProfileController@test1");
     // Route::post("/", "ProfileController@test2");
     ///////////////////////////////////////////
+    Route::get("/email","DriveController@mail_test");
     Route::get("/drive", "DriveController@index");
     Route::get("/drive/create", "DriveController@create");
     Route::post("/drive/create", "DriveController@store");

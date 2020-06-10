@@ -18,6 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('department_name')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

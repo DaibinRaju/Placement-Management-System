@@ -32,6 +32,10 @@
                                     <label for="hod">HoD Name</label>
                                     <input type="text" name="hod_name" class="form-control" id="hod" aria-describedby="emailHelp" placeholder="Enter HoD name" required>
                                 </div>
+                                <div class="row form-group col-md-12 m-b-20">
+                                    <label for="hod">Email ID</label>
+                                    <input type="email" name="email" class="form-control" id="hod" aria-describedby="emailHelp" placeholder="Enter Mail ID" required>
+                                </div>
 
                                 <div class="row form-group col-md-12 m-b-20">
                                     <label for="username">Username Name</label>

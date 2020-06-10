@@ -42,6 +42,7 @@ class DepartmentController extends Controller
         $validated_data = request()->validate([
             'department_name' => 'required',
             'hod_name' => 'required',
+            'email' =>'required',
             'username' => 'required',
             'password' => 'required',
         ]);
@@ -61,6 +62,7 @@ class DepartmentController extends Controller
 
         $department = Department::create([
             'department_name' => $request->department_name,
+            'email' => $request->email,
             'user_id' => $user->id,
         ]);
 
