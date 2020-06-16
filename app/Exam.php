@@ -15,4 +15,10 @@ class Exam extends Model
     public function section(){
         return $this->hasMany(Section::class);
     }
+
+    public function responses(){
+        return $this->hasMany(Response::class);
+    }
+
+    
 }

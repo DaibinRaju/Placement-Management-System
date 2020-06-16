@@ -14,13 +14,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- 
-     <link rel="stylesheet" href="/assets/css/examstyle.css">
+
+    <!-- <link rel="stylesheet" href="/assets/css/examstyle.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="/assets/css/jquery.min.js"></script>
-    <script src="/assets/css/bootstrap.min.js"></script> 
-   <link rel="stylesheet" href="assets/css/style.css"> -->
+    <script src="/assets/css/jquery.min.js"></script> -->
+    <!-- <script src="/assets/css/bootstrap.min.js"></script> 
+   <link rel="stylesheet" href="/assets/css/style.css"> -->
+
 
 
     <style>
@@ -99,7 +100,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <form method="post">
-
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-lg btn-danger">End exam</button>
@@ -118,69 +118,75 @@
             <div class="col-sm-2 sidenav">
                 <h4>Sections</h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#section1">Verbal Ablity</a></li>
-                    <li><a href="#section2">Arithmetic Ablity</a></li>
-                    <li><a href="#section3">Logical Ablity</a></li>
-                    <li><a href="#section3">Programming Ablity</a></li>
+                    @foreach($exam->section as $section)
+                    <li class="{{$section->id==$qsec[$current_q]? "active":""}}"><a href="#section1">{{$section->name}}</a></li>
+                    @endforeach
                 </ul><br>
 
-                
+
             </div>
             <div class="col-sm-8 text-left">
                 <form method="post">
                     <div>
-                        <h1>Question :<span id="no"></span></h1>
-
+                        <h1>Question: <span id="no">{{$current_q+1}}</span></h1>
                         <hr>
                         <br />
-                        <h3 id="question"></h3>
+                        <div>{!!$question->question!!}</div>
+
                         <br />
-                        <h3>
-
-                            @csrf
-                            <label class="radio-inline">
-                                <input type="radio" value="A" name="optradio"><span id="op1"></span>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="B" name="optradio"><span id="op2"></span>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="C" name="optradio"><span id="op3"></span>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="D" name="optradio"><span id="op4"></span>
-                            </label>
-
-                        </h3>
+                        @csrf
+                        <div class="list-group">
+                            @foreach($answer as $answer)
+                            <a class="list-group-item">
+                                <label class="radio-inline">
+                                    <input type="radio" value="{{$answer->id}}" name="answer"><span id="op1">{{$answer->option}}</span>
+                                </label>
+                            </a>
+                            @endforeach
+                        </div>
                     </div>
-
-
-
                     <nav>
                         <ul class="nav navbar-nav navbar-right pagination pagination-lg">
                             <li class="page-item">
-                                <a class="page-link" onclick="previous()">Previous</a>
+                                <button type="reset" class="btn btn-lg btn-primary"><span>Clear seletion</span></button>
                             </li>
-                            <li class="page-item"><a class="page-link" onclick="flag()">Flag</a></li>
-                            <li class="page-item"><a class="page-link" id="submit">Submit</a></li>
                             <li class="page-item">
-                                <a class="page-link" onclick="next()">Next</a>
+                                <button type="submit" name="skip" class="btn btn-lg btn-primary"><span>Skip</span></button>
                             </li>
+                            <li class="page-item">
+                                <button type="submit" name="response" class="btn btn-lg btn-primary"><span>Submit</span></button>
+                            </li>
+
                         </ul>
                     </nav>
                 </form>
             </div>
-            <div class="col-sm-2 sidenav">
+            <div class="overflow-auto col-sm-2 sidenav">
                 <div class="col-sm-12" id="navigation">
+                    @for($i=0;$i<$q_count;++$i)
+                        @if($qsec[$i]==$qsec[$current_q])
+                            @if($qst[$i]==-1)
+                            <button type="button" class="col-sm-4 btn  btn-icon btn-danger"><span class="glyphicon glyphicon-ban-circle"></span>{{1+$i}}</button>
+                            @elseif($qst[$i]==0)
+                            <button type="button" class="col-sm-4 btn  btn-icon btn-info"><span class="glyphicon glyphicon-eye-close"></span>{{1+$i}}</button>
+                            @else
+                            <button type="button" class="col-sm-4 btn  btn-icon btn-success"><span class="glyphicon glyphicon-ok-circle"></span>{{1+$i}}</button>
+                            @endif
+                        @endif
+                    @endfor
+
+
+
+
+                    
+
                     <!-- <button type="button" class="col-sm-4 btn  btn-icon btn-info"><span class="glyphicon glyphicon-eye-close"></span>1</button>
-                    <button type="button" class="col-sm-4 btn  btn-icon btn-info"><span class="glyphicon glyphicon-eye-close"></span>1</button>
                     <button type="button" class="col-sm-4 btn  btn-icon btn-info"><span class="glyphicon glyphicon-eye-close"></span>1</button>
                     <button type="button" class="col-sm-4 btn  btn-icon btn-info"><span class="glyphicon glyphicon-eye-close"></span>1</button>
                     <button type="button" class="col-sm-4 btn  btn-icon btn-info"><span class="glyphicon glyphicon-eye-close"></span>1</button>
                     <button type="button" class="col-sm-4 btn  btn-icon btn-warning"><span class="glyphicon glyphicon glyphicon-flag"></span>1</button>
                     <button type="button" class="col-sm-4 btn  btn-icon btn-success"><span class="glyphicon glyphicon-ok-circle"></span>1</button>
                     <button type="button" class="col-sm-4 btn  btn-icon btn-danger"><span class="glyphicon glyphicon-ban-circle"></span>1</button> -->
-
                 </div>
 
             </div>
@@ -241,82 +247,6 @@
     }, 1000);
 </script>
 
-<script>
-    let questions = {!!$questions!!};
-    var count = {{$count}};
 
-    var current = 0;
-    var code = '';
-
-    for (var i = 1; i <= count; i++) {
-        code += '<button type="button" class="col-sm-4 btn  btn-icon btn-info"><span id="' + i + '" class="glyphicon glyphicon-eye-close"></span>&nbsp;' + i + '</button>';
-    }
-    document.getElementById('navigation').innerHTML = code;
-    setQuestion(current);
-
-    function setQuestion(no) {
-        document.getElementById('no').innerHTML = questions[no].id;
-        document.getElementById('question').innerHTML = questions[no].question;
-        document.getElementById('op1').innerHTML = questions[no].op1;
-        document.getElementById('op2').innerHTML = questions[no].op2;
-        document.getElementById('op3').innerHTML = questions[no].op3;
-        document.getElementById('op4').innerHTML = questions[no].op4;
-    }
-
-    function previous() {
-        if (current != 0) {
-            current -= 1;
-            setQuestion(current);
-        }
-    }
-
-    function next() {
-        if (current != count) {
-            current += 1;
-            setQuestion(current);
-        }
-    }
-
-    function flag(current) {
-        var x = document.getElementByTagName("span");
-        var y = x.getElementById(current);
-        y.setAttribute("class", "glyphicon glyphicon glyphicon-flag");
-    }
-
-    function submit() {
-
-    }
-</script>
-<script>
-    $(function() {
-        $("#submit").click(function(event) {
-            event.preventDefault();
-            var $post = {};
-
-            $post._token = document.getElementsByName("_token")[0].value;
-            $post.question_id=questions[current].id;
-            $post.response = $("input[name='optradio']:checked").val();
-            if ($post.response == null) {
-                alert("Select an option");
-                return;
-            }
-
-            $.ajax({
-                url: '/student/eval/{{$exam->id}}',
-                type: 'POST',
-                data: $post,
-                cache: false,
-                success: function(data) {
-                    next();
-                    alert(data);
-                    return;
-                },
-                error: function() {
-                    alert('error handing here');
-                }
-            });
-        });
-    });
-</script>
 
 </html>

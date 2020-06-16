@@ -7,8 +7,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\StudentDetail;
-use App\Imports\QuestionsImport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Question;
 use Illuminate\Support\Arr;
 
@@ -124,99 +122,100 @@ class ExamController extends Controller
         return back()->with("success","Exam deleted");
     }
 
-    public function index_student()
-    {
-        $user=Auth::user();
-        $userdata= StudentDetail::where('admission_number',$user->admission_number)->firstOrFail();
-        $exams = Exam::all();
+    // public function index_student()
+    // {
+    //     $user=Auth::user();
+    //     $userdata= StudentDetail::where('admission_number',$user->admission_number)->firstOrFail();
+    //     $exams = Exam::all();
 
-        return view('student.exam', compact('user','userdata','exams'));
-    }
+    //     return view('student.exam', compact('user','userdata','exams'));
+    // }
 
 
-    public function exam(Request $request, Exam $exam)
-    {
-        $questions = Question::where('exam_id', $exam->id)->get(['id', 'question', 'op1', 'op2', 'op3', 'op4']);
-        $count = Question::where('exam_id', $exam->id)->count();
-        return view('exam.exam', compact('exam', 'questions', 'count'));
-    }
 
-    public function attend(Request $request, $id)
-    {
-        // dd($request);
-        $exam = Exam::findOrFail($id);
+    // public function exam(Request $request, Exam $exam)
+    // {
+    //     $questions = Question::where('exam_id', $exam->id)->get(['id', 'question', 'op1', 'op2', 'op3', 'op4']);
+    //     $count = Question::where('exam_id', $exam->id)->count();
+    //     return view('exam.exam', compact('exam', 'questions', 'count'));
+    // }
 
-        if ($request->session()->has('id')) {
+    // public function attend(Request $request, $id)
+    // {
+    //     // dd($request);
+    //     $exam = Exam::findOrFail($id);
 
-            //return(ExamController::exam());
-            if ($request->session()->get('id') == $id) {
-                return (ExamController::exam($request, $exam));
-            } else
-                return back();
-        }
+    //     if ($request->session()->has('id')) {
 
-        if ($request->has('password')) {
-            if ($request->password == $exam->password) {
+    //         //return(ExamController::exam());
+    //         if ($request->session()->get('id') == $id) {
+    //             return (ExamController::exam($request, $exam));
+    //         } else
+    //             return back();
+    //     }
 
-                $request->session()->put('id', $id);
-                $request->session()->put('mark', 0);
-                $request->session()->put('responses', []);
+    //     if ($request->has('password')) {
+    //         if ($request->password == $exam->password) {
 
-                return (ExamController::exam($request, $exam));
-            }
-            else{
-                return back();
-            }
-        } else {
-            return view('exam.verify');
-        }
-    }
+    //             $request->session()->put('id', $id);
+    //             $request->session()->put('mark', 0);
+    //             $request->session()->put('responses', []);
 
-    public function evaluate(Request $request,$id){
-        $mark=$request->session()->get('mark');
-        $responses=$request->session()->get('responses');
-        $question_id=$request->get('question_id');
-        $response=$request->get('response');
+    //             return (ExamController::exam($request, $exam));
+    //         }
+    //         else{
+    //             return back();
+    //         }
+    //     } else {
+    //         return view('exam.verify');
+    //     }
+    // }
 
-        $question=Question::findOrFail($question_id);
-        $exam = Exam::findOrFail($id);
-        if (($request->session()->has('id')) &&($request->session()->get('id') == $id)) {
-            if(!(Arr::exists($responses,$question_id) && $responses[$question_id]==$response)){
+    // public function evaluate(Request $request,$id){
+    //     $mark=$request->session()->get('mark');
+    //     $responses=$request->session()->get('responses');
+    //     $question_id=$request->get('question_id');
+    //     $response=$request->get('response');
 
-                if($question['correct']==$response){
-                    $mark+=$exam['mark'];
-                }
-                else{
-                    $mark-=$exam['nmark'];
-                }
-            }
+    //     $question=Question::findOrFail($question_id);
+    //     $exam = Exam::findOrFail($id);
+    //     if (($request->session()->has('id')) &&($request->session()->get('id') == $id)) {
+    //         if(!(Arr::exists($responses,$question_id) && $responses[$question_id]==$response)){
+
+    //             if($question['correct']==$response){
+    //                 $mark+=$exam['mark'];
+    //             }
+    //             else{
+    //                 $mark-=$exam['nmark'];
+    //             }
+    //         }
             
-            $responses[$question_id]=$response;
-            $request->session()->put('responses', $responses);
-            $request->session()->put('mark', $mark);
-            return $mark;
+    //         $responses[$question_id]=$response;
+    //         $request->session()->put('responses', $responses);
+    //         $request->session()->put('mark', $mark);
+    //         return $mark;
 
-        }
-        else{
-            return 0;
-        }
+    //     }
+    //     else{
+    //         return 0;
+    //     }
 
         
-    }
+    // }
 
-    public function end(Request $request)
-    {
-        //$request->session()->flush();
-        $request->session()->forget('id');
-        $request->session()->forget('mark');
-        $request->session()->forget('responses');
-        return redirect('/student/exam');
-    }
+    // public function end(Request $request)
+    // {
+    //     //$request->session()->flush();
+    //     $request->session()->forget('id');
+    //     $request->session()->forget('mark');
+    //     $request->session()->forget('responses');
+    //     return redirect('/student/exam');
+    // }
 
-    public function test(Request $request){
+    // public function test(Request $request){
         
         
-        $a=$request->session()->get('mark');
-        dd($a);
-    }
+    //     $a=$request->session()->get('mark');
+    //     dd($a);
+    // }
 }
