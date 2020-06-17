@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Subject;
 use App\Question;
+use App\Imports\QuestionsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -177,6 +179,26 @@ class QuestionController extends Controller
             ]);
 
             return redirect()->route('subject.show',$subject)->with("success","Question created under this subject");
+        }
+
+        if($request->has('form31')){
+            $request->validate([
+                'file'=>'required'
+            ]);
+
+            $subject=Subject::findOrFail($id);
+            Excel::import(new QuestionsImport($subject->id), request()->file('file'));
+            return back()->with("success","Questions created under this subject");
+        }
+
+        if($request->has('form32')){
+            $request->validate([
+                'file'=>'required'
+            ]);
+
+            $subject=Subject::findOrFail($id);
+            Excel::import(new QuestionsImport($subject->id), request()->file('file'));
+            return redirect()->route('subject.show',$subject)->with("success","Questions created under this subject");
         }
         
     }

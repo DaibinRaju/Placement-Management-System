@@ -114,10 +114,13 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
     Route::post("/completeprofile", "ProfileController@completeProfile");
     Route::get("/editprofile", "ProfileController@editProfile")->name('student.editprofile');
     Route::post("/editprofile", "ProfileController@editProfile2");
-    Route::get("/exam", "ExamController@index_student");
-    Route::get("/attend/{id}", "ExamController@attend");
-    Route::post("/attend/{id}", "ExamController@attend");
-    Route::delete("/attend/{id}", "ExamController@end");
+    ////////////////////////////////////////////////
+    Route::get("/exam", "ExamhandleController@index");
+    Route::get("/attend/{exam}", "ExamhandleController@show");
+    Route::post("/attend/{exam}", "ExamhandleController@verify");
+    Route::get("/attend/{exam}/questions", "ExamhandleController@question");
+    Route::post("/attend/{exam}/questions", "ExamhandleController@response");
+    Route::delete("/attend/{id}/questions", "ExamhandleController@destroy");
     Route::post("/eval/{id}", "ExamController@evaluate");
 /////////////////////////////////////////////////
     Route::get("/drive", "RegistrationController@index");

@@ -99,7 +99,8 @@
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
-                            <button type="submit" name="form3" class="btn  btn-primary">Submit</button>
+                            <button type="submit" name="form31" class="btn  btn-primary">Save and next</button>
+                            <button type="submit" name="form32" class="btn  btn-primary">Save and exit</button>
                         </form>
                     </div>
                 </div>
@@ -112,7 +113,7 @@
 </div>
 @endsection
 
-@section('js')
+@section('extrajs')
 <script src="/assets/js/tinymce/tinymce.min.js"></script>
 <script>
     tinymce.init({
