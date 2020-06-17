@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(Exam::class);
     }
 
+    public function placement(){
+        return $this->hasMany(Placement::class);
+    }
+
+
     // public function drive(){
     //     return $this->hasMany(Drive::class);
     // }

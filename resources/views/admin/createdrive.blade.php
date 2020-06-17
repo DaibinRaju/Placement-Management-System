@@ -87,10 +87,8 @@
 @endsection
 
 @section('extrajs')
-<script src="/assets/js/menu-setting.min.js"></script>
 <script src="/assets/js/plugins/select2.full.min.js"></script>
 <script src="/assets/js/pages/form-select-custom.js"></script>
-<script src="/assets/js/menu-setting.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();

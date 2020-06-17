@@ -9,8 +9,6 @@
             </div>
         </div>
         <div class="tab-content">
-
-           
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -19,8 +17,6 @@
                         </div>
                         <div class="col-md-9 col-sm-9">
                             <div class="float-right d-xl-inline-block d-lg-inline-block">
-
-                                <a href="exam/create" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Exam</a>
                             </div>
                         </div>
                     </div>
@@ -40,15 +36,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($exams as $row)
+                                            @foreach($exams as $exam)
                                             <tr>
-                                                <td>{{$row['name']}}</td>
-                                                <td>{{$row['password']}}</td>
-                                                <td>{{$row['act_date']}}</td>
-                                                <td>{{$row['created_at']}}</td>
+                                                <td>{{$exam['name']}}</td>
+                                                <td>{{$exam['password']}}</td>
+                                                <td>{{$exam['act_date']}}</td>
+                                                <td>{{$exam['created_at']}}</td>
                                                 <td><label class="badge badge-light-warning">Active</label></td>
-                                                <td><a href="/admin/exam/{{$row['id']}}"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a>
-                                                    <a id="delete" onclick="verify()" href="/admin/exam/delete/{{$row['id']}}"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
+                                                <td>
+                                                    <a href="{{route('faculty.exam.show',$exam)}}"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a>
+                                                    <a id="delete" onclick="verify()" href="{{route('faculty.exam.delete',$exam)}}"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a>
                                                 </td>
 
                                             </tr>

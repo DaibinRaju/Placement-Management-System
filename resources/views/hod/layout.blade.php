@@ -827,13 +827,7 @@
                         <li class="nav-item pcoded-menu-caption">
                             <label>Dashboard</label>
                         </li>
-                        <li class="nav-item active pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Placements</span></a>
-                            <ul class="pcoded-submenu">
-                                <li><a href="index-project-statistics.html">Active</a></li>
-                                <li><a href="index-project-details.html">Expired</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a href="{{route('hod.home')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Drives</span></a></li>
                         <li class="nav-item"><a href="/hod/faculty" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Faculties</span></a></li>
                         <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
                         <li class="nav-item"><a href="{{route('hod.calendar')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Calendar</span></a></li>

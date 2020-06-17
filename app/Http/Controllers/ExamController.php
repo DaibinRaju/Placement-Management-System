@@ -25,6 +25,14 @@ class ExamController extends Controller
         return view('faculty.exam', compact('exams'));
     }
 
+    public function index_admin()
+    {
+        $exams = Exam::all();
+        
+        //dd($exams);
+        return view('admin.exam', compact('exams'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -80,6 +88,14 @@ class ExamController extends Controller
         $sections=$exam->section;
         $subjects=User::find(Auth::user()->id)->subject;
         return view('faculty.examshow', compact('exam','subjects','sections'));
+    }
+
+    public function show_admin($id)
+    {
+        $exam = Exam::findOrFail($id);
+        $sections=$exam->section;
+        $subjects=User::find(Auth::user()->id)->subject;
+        return view('admin.examshow', compact('exam','subjects','sections'));
     }
 
     /**

@@ -32,6 +32,56 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade bd-example-modal-xl" tabindex="-1" id="model1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Select students</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			</div>
+			<form method="post">
+				@csrf
+				<div class="modal-body">
+					<div class="dt-responsive table-responsive">
+						<table id="select" class="table table-striped table-bordered nowrap">
+							<thead>
+								<tr>
+									<th>Select</th>
+									<th>Name</th>
+									<th>Department</th>
+									<th>Admission Number</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($registrations as $key=>$registration)
+								<tr>
+									<td>
+										<div class="chk-option">
+											<label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+												<input type="checkbox" name="pld_stu[]" class="custom-control-input" value="{{$registration->user->id}}">
+												<span class="custom-control-label"></span>
+											</label>
+										</div>
+									</td>
+									<td>{{$registration->user->name}}</td>
+									<td>{{$registration->user->department->department_name}}</td>
+									<td>{{$registration->user->admission_number}}</td>
+								</tr>
+								@endforeach
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-rounded btn-success">Save</button>
+					<button type="button" class="btn btn-rounded  btn-secondary">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="">
@@ -67,31 +117,80 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-header">
-				<h5>Placed students</h5>
+				<h5>Registered students</h5>
 			</div>
 			<div class="card-body">
 				<div class="dt-responsive table-responsive">
-					<table id="simpletable" class="table table-striped table-bordered nowrap">
+					<table id="reg-stu" class="table table-striped table-bordered nowrap">
 						<thead>
 							<tr>
-							<th>No</th>
+								<th>No</th>
 								<th>Name</th>
 								<th>Department</th>
-								<th>Admission Number</th>	
+								<th>Admission Number</th>
 							</tr>
 						</thead>
 						<tbody>
-						@foreach($registrations as $key=>$registration)
+							@foreach($registrations as $key=>$registration)
 							<tr>
 								<td>{{++$key}}</td>
 								<td>{{$registration->user->name}}</td>
 								<td>{{$registration->user->department->department_name}}</td>
 								<td>{{$registration->user->admission_number}}</td>
-								
 							</tr>
 							@endforeach
 						</tbody>
-						
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="card">
+
+			<div class="card-body">
+				<div class="row">
+					<div class=" col-md-3 col-sm-3">
+						<h5 class="card-title float-left align-self-center ">Placed Students</h5>
+					</div>
+					<br>
+					<div class="col-md-9 col-sm-9">
+						<div class="float-right d-xl-inline-block d-lg-inline-block">
+							<a data-toggle="modal" href="#" data-target="#model1" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add students</a>
+						</div>
+					</div>
+				</div>
+				<div class="dt-responsive table-responsive">
+					<table id="pld-stu" class="table table-striped table-bordered nowrap">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Name</th>
+								<th>Department</th>
+								<th>Admission Number</th>
+								<th class="icon-color2">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash" aria-hidden="true"></i></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($drive->placement as $key=>$placement)
+							<tr>
+								<td>{{++$key}}</td>
+								<td>{{$placement->user->name}}</td>
+								<td>{{$placement->user->department->department_name}}</td>
+								<td>{{$placement->user->admission_number}}</td>
+								<td>
+									<form method="post">
+										@csrf
+										@method('delete')
+										<input type="hidden" name="id" value="{{ $placement->id }}">
+										<button type="submit" class="btn"><i class="feather icon-trash-2"></i></button>
+									</form>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+
 					</table>
 				</div>
 			</div>
@@ -128,7 +227,7 @@
 										<input type="hidden" id="cat" name="cat" value="drive" />
 										<input type="hidden" id="cat1" name="action" value="download" />
 										<input type="hidden" id="cat2" name="fileid" value="{{ $row['id'] }}">
-										<button type="submit" class="btn"><i class="fas fa-download"></i></button>
+										<button type="submit" class="btn"><i class="fa fa-download"></i></button>
 									</form>
 
 								</td>
@@ -153,174 +252,64 @@
 	</div>
 </div>
 
-<div class="row">
-<div class="col-sm-12">
-<div class="page-titles">
-<div class="align-self-center text-right">
-</div>
-</div>
-<div class="tab-content">
 
-<div class="modal fade assign-members" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel2" aria-hidden="true">
-<div class="modal-dialog modle-510">
-<div class="modal-content">
-<div class="modal-header border-0 pl-4 pr-4 pb-0">
-<h4 class="modal-title text-uppercase font-weight-bold" id="myLargeModalLabel2">Assign members</h4>
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-</div>
-<div class="modal-body pt-3  pl-2 pr-2 pb-0">
-<div class="table-responsive">
-<table class="table color-table primary-table table2">
-<tbody>
-<tr>
-<td>
-<div class="round-img"><img src="assets/images/user/avatar-2.jpg" alt="user" class="img-radius"></div>
-</td>
-<td class="font-weight-bold">Roberto Jovanni</td>
-<td>developer</td>
-<td><input type="radio"></td>
-</tr>
-<tr>
-<td>
-<div class="round-img"><img src="assets/images/user/avatar-2.jpg" alt="user" class="img-radius"></div>
-</td>
-<td class="font-weight-bold">Roberto Jovanni</td>
-<td>developer</td>
-<td><input type="radio"></td>
-</tr>
-<tr>
-<td>
-<div class="round-img"><img src="assets/images/user/avatar-2.jpg" alt="user" class="img-radius"></div>
-</td>
-<td class="font-weight-bold">Roberto Jovanni</td>
-<td>developer</td>
-<td><input type="radio"></td>
-</tr>
-<tr>
-<td>
-<div class="round-img"><img src="assets/images/user/avatar-2.jpg" alt="user" class="img-radius"></div>
-</td>
-<td class="font-weight-bold">Roberto Jovanni</td>
-<td>developer</td>
-<td><input type="radio"></td>
-</tr>
-<tr>
-<td>
-<div class="round-img"><img src="assets/images/user/avatar-2.jpg" alt="user" class="img-radius"></div>
-</td>
-<td class="font-weight-bold">Roberto Jovanni</td>
-<td>developer</td>
-<td><input type="radio"></td>
-</tr>
-<tr>
-<td>
-<div class="round-img"><img src="assets/images/user/avatar-2.jpg" alt="user" class="img-radius"></div>
-</td>
-<td class="font-weight-bold">Roberto Jovanni</td>
-<td>developer</td>
-<td><input type="radio"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="clearfix"></div>
-</div>
-<div class="modal-footer  p-4">
-<button type="button" class="btn btn-rounded btn-success">Save</button>
-<button type="button" class="btn btn-rounded  btn-secondary">Cancel</button>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-body">
-<div class="row">
-<div class=" col-md-3 col-sm-3">
-<h5 class="card-title float-left align-self-center text-uppercase">Registered Students</h5>
-</div>
-<div class="col-md-9 col-sm-9">
-<div class="float-right d-none d-xl-inline-block d-lg-inline-block">
-<div class="search"> <span class="fa fa-search"></span>
-<input placeholder="Search..">
-</div>
-<a data-toggle="modal" href="#" data-target=".assign-members" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Export Excel</a>
-</div>
-</div>
-</div>
-<div class="clearfix"></div>
-<div class="mt-3">
-
-</div>
-<div class="clearfix"></div>
-<div class="table-responsive">
-<table class="table color-table primary-table">
-<thead>
-<tr>
-<th>No </th>
-<th>Name</th>
-<th>Department</th>
-<th>Admission Number</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-@foreach($registrations as $key=>$registration)
-<tr>
-<td>{{++$key}}</td>
-<td>{{$registration->user->name}}</td>
-<td class="font-bold">{{$registration->user->department->department_name}}</td>
-<td>{{$registration->user->admission_number}}</td>
-<td class="text-success"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
-<td class="text-light-blue"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-<div class="dropdown-menu" x-placement="bottom-start" x-out-of-boundaries="" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(669px, 201px, 0px);"><a class="dropdown-item" href="#">Confirm Placed</a> <a class="dropdown-item" href="#">View Student</a> <a class="dropdown-item text-light-danger" href="#">Reject Registration</a> </div>
-</td>
-</tr>
-@endforeach
-</tbody>
-</table>
-</div>
-<div class="row">
-<div class="col-md-6 page-n">Show: <a href="#" class="active">10</a> <a href="#">20</a> <a href="#">50</a></div>
-<div class="col-md-6 text-right page-n">Prev <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> ... <a href="#">10</a> <a href="#">11</a> <a href="#">12</a> <a href="#">Next</a></div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-</div>
 @endsection
 
 @section('extrajs')
 <script src="/assets/js/plugins/jquery.dataTables.min.js"></script>
 <script src="/assets/js/plugins/dataTables.bootstrap4.min.js"></script>
-<script src="/assets/js/pages/data-basic-custom.js"></script>
+<!-- <script src="/assets/js/pages/data-basic-custom.js"></script> -->
+<!-- <script src="/assets/js/pages/data-export-custom.js"></script> -->
+<script src="/assets/js/plugins/buttons.colVis.min.js"></script>
+<script src="/assets/js/plugins/buttons.print.min.js"></script>
+<script src="/assets/js/plugins/pdfmake.min.js"></script>
+<script src="/assets/js/plugins/jszip.min.js"></script>
+<script src="/assets/js/plugins/dataTables.buttons.min.js"></script>
+<script src="/assets/js/plugins/buttons.html5.min.js"></script>
+<script src="/assets/js/plugins/buttons.bootstrap4.min.js"></script>
+<script src="/assets/js/plugins/dataTables.select.min.js"></script>
 <script>
-    var _validFileExtensions = [".jpg", ".pdf", ".docx", ".png"];
+	$(document).ready(function() {
+		setTimeout(function() {
+			$('#reg-stu').DataTable({
+				dom: 'Bfrtip',
+				buttons: ['copy', 'excel', 'print', 'colvis']
+			});
 
-    function ValidateSingleInput(oInput) {
-        if (oInput.type == "file") {
-            var sFileName = oInput.value;
-            if (sFileName.length > 0) {
-                var blnValid = false;
-                for (var j = 0; j < _validFileExtensions.length; j++) {
-                    var sCurExtension = _validFileExtensions[j];
-                    if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
-                        blnValid = true;
-                        break;
-                    }
-                }
+			$('#pld-stu').DataTable({
+				dom: 'Bfrtip',
+				buttons: ['copy', 'excel', 'print', 'colvis']
+			});
 
-                if (!blnValid) {
-                    alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
-                    oInput.value = "";
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+			$('#select').DataTable();
+
+		}, 350);
+	});
+</script>
+<script>
+	var _validFileExtensions = [".jpg", ".pdf", ".docx", ".png"];
+
+	function ValidateSingleInput(oInput) {
+		if (oInput.type == "file") {
+			var sFileName = oInput.value;
+			if (sFileName.length > 0) {
+				var blnValid = false;
+				for (var j = 0; j < _validFileExtensions.length; j++) {
+					var sCurExtension = _validFileExtensions[j];
+					if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+						blnValid = true;
+						break;
+					}
+				}
+
+				if (!blnValid) {
+					alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+					oInput.value = "";
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 </script>
 @endsection
-

@@ -13,6 +13,7 @@ use App\Registeration;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DriveAnnouncement;
+use App\Placement;
 
 class DriveController extends Controller
 {
@@ -89,7 +90,7 @@ class DriveController extends Controller
             foreach($dep_fac as $f){
                 array_push($faculties_dept,$f['email']);
             }
-            Mail::to($depart['email'])->cc($faculties_dept)->send(new DriveAnnouncement($drive));
+            //Mail::to($depart['email'])->cc($faculties_dept)->send(new DriveAnnouncement($drive));
         }
        
         return redirect('/admin/drive');
@@ -115,9 +116,21 @@ class DriveController extends Controller
      * @param  \App\Drive  $drive
      * @return \Illuminate\Http\Response
      */
-    public function edit(Drive $drive)
+    public function edit(Request $request, Drive $drive)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'pld_stu'=>'required'
+        ]);
+
+        foreach($request->pld_stu as $user_id){
+            Placement::create([
+                'drive_id'=>$drive->id,
+                'user_id'=>$user_id
+            ]);
+        }
+
+        return back()->with("success","Students added to placed list");
     }
 
     /**
@@ -146,5 +159,14 @@ class DriveController extends Controller
             $drive->delete();
         }
         return back();
+    }
+
+    public function delete_placement(Request $request,$id){
+        $request->validate([
+            'id'=>'required'
+        ]);
+        $placement=Placement::findOrFail($request->id);
+        $placement->delete();
+        return back()->with("success","Entry deleted");
     }
 }

@@ -29,11 +29,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     // Route::get("/", "ProfileController@test1");
     // Route::post("/", "ProfileController@test2");
     ///////////////////////////////////////////
-    Route::get("/email","DriveController@mail_test");
+    // Route::get("/email","DriveController@mail_test");
     Route::get("/drive", "DriveController@index");
     Route::get("/drive/create", "DriveController@create");
     Route::post("/drive/create", "DriveController@store");
     Route::get("/drive/{id}", "DriveController@show");
+    Route::post("/drive/{drive}", "DriveController@edit");
+    Route::delete("/drive/{drive}", "DriveController@delete_placement");
     Route::post("/drive/{id}/file", "FileUploadController@store")->name('admin.drive.fileupload');
     Route::get("/drive/delete/{id}", "DriveController@destroy");
     //todo>>>>
@@ -48,11 +50,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('/department/{id}', 'DepartmentController@show');
     Route::get('/department/delete/{id}', 'DepartmentController@destroy');
     //////////////////////////////////////////
-    Route::get("/exam", "ExamController@index");
-    Route::get("/exam/create", "ExamController@create");
-    Route::post("/exam/create", "ExamController@store");
-    Route::get('/exam/{id}', 'ExamController@show');
-    Route::get('/exam/delete/{id}', 'ExamController@destroy');
+    Route::get("/exam", "ExamController@index_admin");
+    // Route::get("/exam/create", "ExamController@create");
+    // Route::post("/exam/create", "ExamController@store");
+    Route::get('/exam/{id}', 'ExamController@show_admin');
+    // Route::get('/exam/delete/{id}', 'ExamController@destroy');
     ////////////////////////////////////////////
 
     Route::get('/training', 'TrainingController@index');
@@ -90,7 +92,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 });
 
 Route::group(['prefix' => 'hod', 'middleware' => 'is_hod'], function () {
-    Route::get('/','RegistrationController@hod_drives');
+    Route::get('/','RegistrationController@hod_drives')->name('hod.home');
     Route::get('/drive/{id}','RegistrationController@hod_drive_view');
     Route::get('/file-upload', function () {
         return view('hod.fileupload');

@@ -12,6 +12,10 @@ class Drive extends Model
         return $this->hasMany(Registeration::class);
     }
 
+    public function placement(){
+        return $this->hasMany(Placement::class);
+    }
+
     // public function user(){
     //     return $this->belongsTo(User::class);
     // }
