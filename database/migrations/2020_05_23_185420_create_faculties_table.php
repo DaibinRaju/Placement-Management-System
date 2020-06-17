@@ -15,7 +15,16 @@ class CreateFacultiesTable extends Migration
     {
         Schema::create('faculties', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('department_id');
+            $table->string('faculty_name')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
+
+            $table->foreign('department_id')
+            ->references('id')
+            ->on('departments')
+            ->onDelete('cascade');
         });
     }
 

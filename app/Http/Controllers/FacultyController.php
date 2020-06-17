@@ -57,10 +57,17 @@ class FacultyController extends Controller
                 'password' => Hash::make($request->password),
                 'role' => "faculty",
             ]);
+            $faculty = Faculty::create([
+                'faculty_name' => $request->faculty_name,
+                'email' => $request->email,
+                'user_id' => $user->id,
+                'department_id' => Auth::user()->department_id,
+            ]);
             return back()->with("success","Faculty user created");
         } catch (QueryException $e) {
             return back()->with("error",$e->errorInfo[2]);
         }
+        
     }
 
     /**

@@ -27,6 +27,11 @@
                                     
                                 </div>
                                 <div class="row form-group col-md-12 m-b-20">
+                                    <label for="faculty_name">Email ID</label>
+                                    <input type="email" name="email" class="form-control" id="faculty_name" aria-describedby="emailHelp" placeholder="Enter mail Id" required>
+                                    
+                                </div>
+                                <div class="row form-group col-md-12 m-b-20">
                                     <label for="username">Username Name</label>
                                     <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username" required>
                                 </div>
@@ -54,7 +59,7 @@
                         <div class="col-md-9 col-sm-9">
                             <div class="float-right d-xl-inline-block d-lg-inline-block">
 
-                                <a data-toggle="modal" href="#" data-target=".assign-members" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Department</a>
+                                <a data-toggle="modal" href="#" data-target=".assign-members" class="float-right btn waves-effect waves-light btn-rounded btn-primary">Add Faculty</a>
                             </div>
                         </div>
                     </div>

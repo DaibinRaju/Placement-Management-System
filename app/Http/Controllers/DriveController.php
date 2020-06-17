@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Drive;
+use App\Faculty;
 use App\DriveFile;
 use App\FormItems;
+use App\Department;
 use Illuminate\Http\Request;
 use App\Form;
 use App\Registeration;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DriveAnnouncement;
 
 class DriveController extends Controller
 {
@@ -22,6 +26,13 @@ class DriveController extends Controller
         return view('admin.drive', compact('drives'));
 
     }
+
+    // public function mail_test(){
+    //     $id=1;
+    //     $drive= Drive::findOrFail($id);
+    //     Mail::to('joeljames270@gmail.com')->send(new DriveAnnouncement($drive));
+    // //     return new DriveAnnouncement($drive);
+    //  }
 
     /**
      * Show the form for creating a new resource.
@@ -69,6 +80,18 @@ class DriveController extends Controller
                 'form_item_id'=>$item
             ]);
         }
+        $departments = Department::all()->toArray();
+        $faculties = Faculty::all()->toArray();
+        foreach($departments as $depart){
+            $dep=Department::findOrFail($depart['id']);
+            $dep_fac=$dep->faculty;
+            $faculties_dept=[];
+            foreach($dep_fac as $f){
+                array_push($faculties_dept,$f['email']);
+            }
+            Mail::to($depart['email'])->cc($faculties_dept)->send(new DriveAnnouncement($drive));
+        }
+       
         return redirect('/admin/drive');
     }
 
