@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Exam;
 use App\Question;
+use App\Response;
 use App\Section;
 use App\StudentDetail;
 use Faker\Calculator\Ean;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -56,6 +58,8 @@ class ExamhandleController extends Controller
     public function show(Request $request, Exam $exam)
     {
         // dd($request->session());
+        // $request->session()->forget('')
+        //$request->session()->flush();
         if ($request->session()->has('exam_id')) {
             if ($exam->id == $request->session()->get('exam_id')) {
                 return redirect()->action('ExamhandleController@question', $exam);
@@ -104,13 +108,21 @@ class ExamhandleController extends Controller
             // echo $request->session()->get('questions');
             // $shuffledq = $q->shuffle();
 
-
+            $response=Response::create([
+                'exam_id'=>$exam->id,
+                'user_id'=>Auth::user()->id,
+                'score'=>0,
+                'q_count'=>$count,
+                'qst'=>serialize($qst),
+                'qid'=>serialize($qid)
+            ]);
             $request->session()->put('exam_id', $exam->id);
             $request->session()->put('qid', $qid);
             $request->session()->put('qst', $qst);
             $request->session()->put('qsec', $qsec);
             $request->session()->put('current_q', 0);
             $request->session()->put('q_count', $count);
+            $request->session()->put('r_id', $response->id);
             return redirect()->action('ExamhandleController@question', $exam);
         }
     }
@@ -124,6 +136,11 @@ class ExamhandleController extends Controller
         } else {
             return "Wrong exam";
         }
+        $r_id = $request->session()->get('r_id');
+        $response=Response::findOrFail($r_id);
+        $time=Carbon::parse($response->created_at);
+        $time=$time->addMinutes($exam->time);
+        $stime=$time->format('M j\\, Y H:i:s');
 
         $current_q = $request->session()->get('current_q');
         $qid = $request->session()->get('qid');
@@ -132,7 +149,7 @@ class ExamhandleController extends Controller
         $q_count = $request->session()->get('q_count');
         $question = Question::findOrFail($qid[$current_q]);
         $answer = $question->answer->shuffle();
-        return view('exam.exam', compact('exam', 'question', 'answer', 'q_count', 'qsec', 'current_q', 'qst'));
+        return view('exam.exam', compact('exam', 'question', 'answer', 'q_count', 'qsec', 'current_q', 'qst','stime'));
     }
 
 
@@ -141,12 +158,16 @@ class ExamhandleController extends Controller
         $current_q = $request->session()->get('current_q');
         $qid = $request->session()->get('qid');
         $qst = $request->session()->get('qst');
+        $qsec = $request->session()->get('qsec');
         $q_count = $request->session()->get('q_count');
+        $r_id = $request->session()->get('r_id');
+        $response=Response::findOrFail($r_id);
         if ($request->has('skip')) {
             $qst[$current_q] = -1;
             $current_q++;
             $request->session()->put('current_q', $current_q);
             $request->session()->put('qst', $qst);
+            //$response->qst=serialize($qst);
             return redirect()->action('ExamhandleController@question', $exam);
         }
 
@@ -157,6 +178,13 @@ class ExamhandleController extends Controller
             $question = Question::findOrFail($qid[$current_q]);
             $answer = Answer::findOrFail($request->answer);
             if ($question->answer->contains($answer)) {
+                if($answer->isCorrect){
+                    $response->score=$response->score+Section::find($qsec[$current_q])->mark;
+                }
+                else{
+                    $response->score=$response->score-Section::find($qsec[$current_q])->nmark;
+                }
+                $response->save();
                 $qst[$current_q] = $request->answer;
                 $current_q++;
                 $request->session()->put('current_q', $current_q);
@@ -179,6 +207,12 @@ class ExamhandleController extends Controller
 
         //$request->session()->flush();
         $request->session()->forget('exam_id');
+        $request->session()->forget('current_q');
+        $request->session()->forget('qid');
+        $request->session()->forget('qst');
+        $request->session()->forget('qsec');
+        $request->session()->forget('q_count');
+        $request->session()->forget('r_id');
         return redirect('/student/exam');
     }
 }

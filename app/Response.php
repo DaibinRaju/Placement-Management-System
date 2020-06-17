@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Response extends Model
 {
+    protected $guarded=[];
+    
     public function exam(){
         return $this->belongsTo(Exam::class);
     }

@@ -859,7 +859,7 @@
             </div>
         </div>
     </div>
-    @yield('extrajs')
+    
     <script src="/assets/js/vendor-all.min.js"></script>
     <script src="/assets/js/plugins/bootstrap.min.js"></script>
     <script src="/assets/js/pcoded.min.js"></script>
@@ -874,7 +874,7 @@
     <script src="/assets/plugins/vendors/morrisjs/morris.js"></script>
     <script src="/assets/js/pages/dashboard-server.js"></script>
     <script src="/assets/js/plugins/dropzone-amd-module.min.js"></script>
-
+    @yield('extrajs')
     @if(session()->has('error'))
     <script src="/assets/js/plugins/sweetalert.min.js"></script>
     <script>

@@ -17,8 +17,10 @@ class CreateResponsesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('exam_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('score');
-            $table->test('responseArray');
+            $table->integer('score');
+            $table->integer('q_count');
+            $table->text('qid');
+            $table->text('qst');
             $table->timestamps();
 
             $table->foreign('exam_id')

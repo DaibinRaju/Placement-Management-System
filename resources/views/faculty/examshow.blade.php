@@ -170,45 +170,31 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title float-left  m-b-40  align-self-center text-uppercase">Results</h5>
+                                <h5 class="card-title float-left  m-b-40  align-self-center">Results</h5>
                                 <div class="clearfix"></div>
                                 <div class="table-responsive">
                                     <table class="table color-table primary-table">
                                         <thead>
                                             <tr>
-                                                <th>Document Name </th>
-                                                <th>Attached by</th>
-                                                <th>Date</th>
-                                                <th>Size</th>
-                                                <th class="icon-color"><i class="fa fa-download" aria-hidden="true"></i></th>
+                                            <th>#</th>
+                                                <th>Student Name </th>
+                                                <th>Department</th>
+                                                <th>Admission No</th>
+                                                <th>Score</th>
                                                 <th class="icon-color2"><i class="fa fa-trash" aria-hidden="true"></i></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($exam->responses as $key=>$response)
                                             <tr>
-                                                <td class="font-bold">1. Documentation.pdf</td>
-                                                <td>Brian Summerhoold</td>
-                                                <td>25.05.2017, 11:15</td>
-                                                <td>2 Mb</td>
-                                                <td class="icon-color op-5"><i class="fa fa-download" aria-hidden="true"></i></td>
-                                                <td class="icon-color2 op-5"><i class="fa fa-trash text-danger" aria-hidden="true"></i></td>
+                                                <td>{{$key+1}}</td>
+                                                <td class="font-bold">{{$response->user->name}}</td>
+                                                <td>{{$response->user->department->department_name}}</td>
+                                                <td>{{$response->user->admission_number}}</td>
+                                                <td>{{$response->score}}</td>
+                                                <td class="icon-color2 op-5"><i class="fa fa-trash text-danger" ></i></td>
                                             </tr>
-                                            <tr>
-                                                <td class="font-bold">2. Contract.pdf</td>
-                                                <td>Brian Summerhoold</td>
-                                                <td>25.05.2017, 12:03</td>
-                                                <td>1.5 Mb</td>
-                                                <td class="icon-color op-5"><i class="fa fa-download" aria-hidden="true"></i></td>
-                                                <td class="icon-color2 op-5"><i class="fa fa-trash text-danger" aria-hidden="true"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="font-bold">3. Logotype.psd</td>
-                                                <td>Brian Summerhoold</td>
-                                                <td>25.05.2017, 14:26</td>
-                                                <td>2 Mb</td>
-                                                <td class="icon-color op-5"><i class="fa fa-download" aria-hidden="true"></i></td>
-                                                <td class="icon-color2 op-5"><i class="fa fa-trash text-danger" aria-hidden="true"></i></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
