@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Drive;
+use App\Faculty;
 use App\DriveFile;
 use App\FormItems;
 use App\Department;
@@ -80,8 +81,15 @@ class DriveController extends Controller
             ]);
         }
         $departments = Department::all()->toArray();
+        $faculties = Faculty::all()->toArray();
         foreach($departments as $depart){
-            Mail::to($depart['email'])->send(new DriveAnnouncement($drive));
+            $dep=Department::findOrFail($depart['id']);
+            $dep_fac=$dep->faculty;
+            $faculties_dept=[];
+            foreach($dep_fac as $f){
+                array_push($faculties_dept,$f['email']);
+            }
+            Mail::to($depart['email'])->cc($faculties_dept)->send(new DriveAnnouncement($drive));
         }
        
         return redirect('/admin/drive');

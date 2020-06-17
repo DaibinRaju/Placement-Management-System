@@ -32,6 +32,12 @@ class RegistrationController extends Controller
 
     }
 
+    public function faculty_drives(){
+        $drives=Drive::all();
+        return view('faculty.home', compact('drives'));
+
+    }
+
     public function hod_drive_view($id){
         $user = Auth::user();
     
@@ -47,6 +53,24 @@ class RegistrationController extends Controller
         }
         // dd($registered_students);
         return view('hod.driveshow',compact('drive','registered_students'));
+
+    }
+
+    public function faculty_drive_view($id){
+        $user = Auth::user();
+    
+        $drive= Drive::findOrFail($id);
+        $registrations=$drive->registration;
+        $registered_students=[];
+        foreach ($registrations as $register){
+            if(($register->user->department_id)==($user->department_id)){
+                array_push($registered_students,$register);
+            }
+            // dd($register->user->department_id,$user->department_id);
+
+        }
+        // dd($registered_students);
+        return view('faculty.driveshow',compact('drive','registered_students'));
 
     }
 

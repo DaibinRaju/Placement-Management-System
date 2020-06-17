@@ -29,6 +29,6 @@ class DriveAnnouncement extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.driveannounce');
+        return $this->subject('Campus Drive Notification')->markdown('emails.driveannounce');
     }
 }

@@ -137,9 +137,8 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
 });
 
 Route::group(['prefix' => 'faculty', 'middleware' => 'is_faculty'], function () {
-    Route::get('/', function () {
-        return view('faculty.home');
-    });
+    Route::get('/','RegistrationController@faculty_drives');
+    Route::get('/drive/{id}','RegistrationController@faculty_drive_view');
     Route::get('/subjects', 'SubjectController@index');
     Route::post('/subjects', 'SubjectController@store');
     Route::get('/subjects/{subject}', 'SubjectController@show')->name('subject.show');
