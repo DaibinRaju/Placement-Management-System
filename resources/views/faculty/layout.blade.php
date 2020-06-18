@@ -833,10 +833,10 @@
                         <li class="nav-item pcoded-menu-caption">
                             <label>Dashboard</label>
                         </li>
-                        <li class="nav-item active"><a href="/faculty/drive" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Drives</span></a></li>
+                        <li class="nav-item"><a href="/faculty/drive" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Drives</span></a></li>
                         <li class="nav-item"><a href="/faculty/subjects" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Subjects</span></a></li>
                         <li class="nav-item"><a href="{{route('faculty.exam')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Exams</span></a></li>
-                        <li class="nav-item"><a href="/hod/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li>
+                        <!-- <li class="nav-item"><a href="/faculty/file-upload" class="nav-link "><span class="pcoded-micon"><i class="feather icon-upload-cloud"></i></span><span class="pcoded-mtext">File upload</span></a></li> -->
                         <li class="nav-item"><a href="{{route('faculty.calendar')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Calendar</span></a></li>
                         <li class="nav-item pcoded-menu-caption">
                             <label>Other</label>
