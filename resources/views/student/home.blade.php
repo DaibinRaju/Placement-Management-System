@@ -59,6 +59,26 @@
         <div class="card">
             <div class="card-body  card2 pt-3">
                 <div class="row">
+                    <div class="col-lg-9 col-md-9 f-18 font-weight-bold text-uppercase">Placement Details</div>
+                </div>
+                @foreach($company_names as $comp)
+                <div class="accordion" >
+                    <div class="card">
+                        <div class="card-header" >
+                            <h6 class="mb-0">>{{ $comp }}</h6>
+                        </div>
+                    </div>
+                   
+                </div>
+                @endforeach
+
+            </div>
+
+
+        </div>
+        <div class="card">
+            <div class="card-body  card2 pt-3">
+                <div class="row">
                     <div class="col-lg-9 col-md-9 f-18 font-weight-bold text-uppercase">Education</div>
                 </div>
                 <div class="accordion" id="accordionExample">

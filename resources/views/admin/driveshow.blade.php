@@ -121,22 +121,20 @@
 			</div>
 			<div class="card-body">
 				<div class="dt-responsive table-responsive">
-					<table id="reg-stu" class="table table-striped table-bordered nowrap">
+				<table id="reg-stu" class="table table-striped table-bordered nowrap">
 						<thead>
 							<tr>
-								<th>No</th>
-								<th>Name</th>
-								<th>Department</th>
-								<th>Admission Number</th>
+								@foreach($table_headings as $head)
+								<th>{{ $head }}</th>
+								@endforeach
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($registrations as $key=>$registration)
+							@foreach($table_rows as $row)
 							<tr>
-								<td>{{++$key}}</td>
-								<td>{{$registration->user->name}}</td>
-								<td>{{$registration->user->department->department_name}}</td>
-								<td>{{$registration->user->admission_number}}</td>
+								@foreach($row as $data)
+								<td>{{ $data }}</td>
+								@endforeach
 							</tr>
 							@endforeach
 						</tbody>
@@ -146,6 +144,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-md-12">
 		<div class="card">
 
