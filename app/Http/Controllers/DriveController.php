@@ -128,10 +128,8 @@ class DriveController extends Controller
             array_push($table_rows,$temp_array);
         }
         // dd($table_headings);
-        $len_of_head=sizeof($table_headings);
-        $len_of_rows=sizeof($table_rows);
         $files=DriveFile::where('drive_id',$id)->get();
-        return view('admin.driveshow',compact('drive','files','registrations','table_headings','table_rows','len_of_head','len_of_rows'));
+        return view('admin.driveshow',compact('drive','files','registrations','table_headings','table_rows'));
     }
 
     /**
