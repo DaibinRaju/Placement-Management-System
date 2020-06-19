@@ -151,8 +151,8 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="mark" class="form-label">Duration</label>
-                                <input type="number" name="time" class="form-control" value="1" id="mark" placeholder="Enter duration of exam" required>
+                                <label for="mark" class="form-label">Duration of exam in minutes</label>
+                                <input type="number" name="time" class="form-control" value="1" id="mark" placeholder="Enter duration of exam in minutes" required>
                             </div>
 
 

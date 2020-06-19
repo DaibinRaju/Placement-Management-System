@@ -131,9 +131,9 @@
                         <h1>Question: <span id="no">{{$current_q+1}}</span></h1>
                         <hr>
                         <br />
-                        <div>{!!$question->question!!}</div>
+                        <div class="row" style="margin: 0;">{!!$question->question!!}</div>
 
-                        <br />
+                        <br>
                         @csrf
                         <div class="list-group">
                             @foreach($answer as $answer)

@@ -118,7 +118,8 @@ Route::group(['prefix' => 'student', 'middleware' => 'is_student'], function () 
     Route::post("/editprofile", "ProfileController@editProfile2");
     ////////////////////////////////////////////////
     Route::get("/exam", "ExamhandleController@index");
-    Route::get("/attend/{exam}", "ExamhandleController@show");
+    Route::get("/exam/{exam}", "ExamhandleController@exam_details")->name('exam.details');
+    Route::get("/attend/{exam}", "ExamhandleController@show")->name('exam.attend');
     Route::post("/attend/{exam}", "ExamhandleController@verify");
     Route::get("/attend/{exam}/questions", "ExamhandleController@question");
     Route::post("/attend/{exam}/questions", "ExamhandleController@response");
