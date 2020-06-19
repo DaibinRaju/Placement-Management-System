@@ -716,7 +716,7 @@
             <div class="m-header">
                 <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
                 <a href="index.html" class="b-brand">
-                    <img style="height: 100%;max-width: 100%;display: block;margin: auto;" src="/assets/images/logo-dark.png" alt="" class="logo">
+                <img style="height: 50px;max-width: 100%;display: block;margin: auto;" src="/assets/images/logo-dark.jpg" alt="" class="logo">
                 </a>
                 <a href="#!" class="mob-toggler">
                     <i style="color:#4886FF;" class="feather icon-more-vertical"></i>

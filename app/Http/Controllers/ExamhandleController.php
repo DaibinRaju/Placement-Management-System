@@ -28,6 +28,12 @@ class ExamhandleController extends Controller
         return view('student.exam', compact('user', 'userdata', 'exams'));
     }
 
+    public function exam_details(Exam $exam){
+        $user = Auth::user();
+        $userdata = StudentDetail::where('admission_number', $user->admission_number)->firstOrFail();
+        return view('student.examshow',compact('user', 'userdata','exam'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +65,7 @@ class ExamhandleController extends Controller
     {
         // dd($request->session());
         // $request->session()->forget('')
-        //$request->session()->flush();
+         //$request->session()->flush();
         if ($request->session()->has('exam_id')) {
             if ($exam->id == $request->session()->get('exam_id')) {
                 return redirect()->action('ExamhandleController@question', $exam);
@@ -147,6 +153,12 @@ class ExamhandleController extends Controller
         $qst = $request->session()->get('qst');
         $qsec = $request->session()->get('qsec');
         $q_count = $request->session()->get('q_count');
+        //dd($this,$q_count);
+        if($current_q==$q_count){
+            // return redirect()->action('ExamhandleController@destroy', $exam->id);
+            // return(ExamhandleController::destroy($request,$exam->id));
+            return $this->destroy($request,$exam->id);
+        }
         $question = Question::findOrFail($qid[$current_q]);
         $answer = $question->answer->shuffle();
         return view('exam.exam', compact('exam', 'question', 'answer', 'q_count', 'qsec', 'current_q', 'qst','stime'));
@@ -206,6 +218,8 @@ class ExamhandleController extends Controller
     {
 
         //$request->session()->flush();
+        $r_id = $request->session()->get('r_id');
+        $response=Response::findOrFail($r_id);
         $request->session()->forget('exam_id');
         $request->session()->forget('current_q');
         $request->session()->forget('qid');
@@ -213,6 +227,6 @@ class ExamhandleController extends Controller
         $request->session()->forget('qsec');
         $request->session()->forget('q_count');
         $request->session()->forget('r_id');
-        return redirect('/student/exam');
+        return redirect('/student/exam')->with('success',"Your score: ".$response->score);
     }
 }
