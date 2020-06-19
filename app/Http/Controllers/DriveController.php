@@ -106,8 +106,30 @@ class DriveController extends Controller
     {
         $drive= Drive::findOrFail($id);
         $registrations=$drive->registration;
+        $table_headings=[];
+        $table_rows=[];
+        $flag=0;
+        foreach($registrations as $register){
+            $data=unserialize($register->data);
+            $temp_array=[];
+            if($flag==0){
+                foreach($data as $key=>$value){
+                    array_push($table_headings,$key);
+                    array_push($temp_array,$value);
+                }
+                $flag=1;
+            }
+            elseif($flag==1){
+                foreach($data as $key=>$value){
+                    array_push($temp_array,$value);
+                }
+            }
+            // dd($table_headings);
+            array_push($table_rows,$temp_array);
+        }
+        // dd($table_headings);
         $files=DriveFile::where('drive_id',$id)->get();
-        return view('admin.driveshow',compact('drive','files','registrations'));
+        return view('admin.driveshow',compact('drive','files','registrations','table_headings','table_rows'));
     }
 
     /**

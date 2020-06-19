@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\StudentDetail;
-
+use App\Placement;
+use App\Drive;
 use App\Department;
 class ProfileController extends Controller
 {
@@ -13,8 +14,13 @@ class ProfileController extends Controller
     public function showStudentProfile(){
         $user=Auth::user();
         $userdata= StudentDetail::where('admission_number',$user->admission_number)->firstOrFail();
+        $placement_data=Placement::where('user_id',$user->id)->get('drive_id');
+        $company_names=[];
+        foreach ($placement_data as $pd){
+            array_push($company_names,((Drive::findOrFail($pd->drive_id))->company_name));
+        }
         //dd($userdata);
-        return view('student.home', compact('user','userdata'));
+        return view('student.home', compact('user','userdata','company_names'));
     }
     
     public function fillProfile(){
