@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\StudentDetail;
 use App\Drive;
+use App\Placement;
 use App\Form;
 use App\FormItems;
 use App\Registeration;
+use App\User;
 
 class RegistrationController extends Controller
 {
@@ -40,9 +42,19 @@ class RegistrationController extends Controller
 
     public function hod_drive_view($id){
         $user = Auth::user();
-    
+        // dd($id);
         $drive= Drive::findOrFail($id);
         $registrations=$drive->registration;
+        $placements=$drive->placement;
+        $placed_students=[];
+        foreach ($placements as $placement){
+            if(($placement->user->department_id)==($user->department_id)){
+                array_push($placed_students,$placement);
+            }
+            // dd($register->user->department_id,$user->department_id);
+
+        }
+        // dd($placed_students);
         $registered_students=[];
         foreach ($registrations as $register){
             if(($register->user->department_id)==($user->department_id)){
@@ -52,7 +64,7 @@ class RegistrationController extends Controller
 
         }
         // dd($registered_students);
-        return view('hod.driveshow',compact('drive','registered_students'));
+        return view('hod.driveshow',compact('drive','registered_students','placed_students'));
 
     }
 

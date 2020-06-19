@@ -69,6 +69,39 @@
 			</div>
 		</div>
 	</div>
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-header">
+				<h5>Placed students</h5>
+			</div>
+			<div class="card-body">
+				<div class="dt-responsive table-responsive">
+					<table id="simpletable" class="table table-striped table-bordered nowrap">
+						<thead>
+							<tr>
+							<th>No</th>
+								<th>Name</th>
+								<th>Department</th>
+								<th>Admission Number</th>	
+							</tr>
+						</thead>
+						<tbody>
+						@foreach($placed_students as $key=>$registration)
+							<tr>
+								<td>{{++$key}}</td>
+								<td>{{$registration->user->name}}</td>
+								<td>{{$registration->user->department->department_name}}</td>
+								<td>{{$registration->user->admission_number}}</td>
+								
+							</tr>
+							@endforeach
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection
 
